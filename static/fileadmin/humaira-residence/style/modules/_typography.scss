@@ -1,0 +1,128 @@
+// Typograph
+// font-family
+// src
+$_typography: (
+    (
+        HelveticaNowDisplay-Thin,
+        '/fileadmin/font/HelveticaNowDisplay_Thin.ttf'
+    ),
+    (
+        HelveticaNowDisplay-Light,
+        '/fileadmin/font/HelveticaNowDisplay_Light.ttf'
+    ),
+    (
+        HelveticaNowDisplay-Regular,
+        '/fileadmin/font/HelveticaNowDisplay_Regular.ttf'
+    ),
+    (
+        HelveticaNowDisplay-Medium,
+        '/fileadmin/font/HelveticaNowDisplay_Medium.ttf'
+    ),
+    (
+        HelveticaNowDisplay-Bold,
+        '/fileadmin/font/HelveticaNowDisplay_Bold.ttf'
+    ),
+    (
+        HelveticaNowDisplay-Black,
+        '/fileadmin/font/HelveticaNowDisplay_Black.ttf'
+    ),
+    (
+        HelveticaNowDisplay-ExtraBold,
+        '/fileadmin/font/HelveticaNowDisplay_ExtraBold.ttf'
+    ),
+    (
+        HelveticaNowDisplay-ExtraBlack,
+        '/fileadmin/font/HelveticaNowDisplay_ExtraBlack.ttf'
+    ),
+    (
+        InfinixDisplay,
+        '/fileadmin/font/InfinixDisplay.otf'
+    ),
+    (
+        InfinixDisplay-AR,
+        '/fileadmin/font/InfinixDisplay_ar.otf'
+    ),
+    (
+        InfinixDisplay-TH,
+        '/fileadmin/font/InfinixDisplay_th.otf'
+    ),
+    (
+        AktivGroteskEx-Bold,
+        '/fileadmin/font/AktivGroteskEx_Bd.ttf'
+    ),
+    (
+        AktivGroteskEx-Medium,
+        '/fileadmin/font/AktivGroteskEx_Md.ttf'
+    ),
+    (
+        AktivGroteskEx-Regular,
+        '/fileadmin/font/AktivGroteskEx_Rg.ttf'
+    ),
+    (
+        GreatVibes-Regular,
+        '/fileadmin/font/GreatVibes_Regular.ttf'
+    ),
+    (
+        RedRose-Medium,
+        '/fileadmin/font/RedRose_Medium.ttf'
+    ),
+    (
+        RedRose-Light,
+        '/fileadmin/font/RedRose_Light.ttf'
+    ),
+);
+
+// --------------------------------------------------------------
+// Variable
+// --------------------------------------------------------------
+$_using-list: ();
+$_typography-list: ();
+
+// --------------------------------------------------------------
+// Function
+// --------------------------------------------------------------
+@function is($typography) {
+    @if length($_typography-list) == 0 {
+        @each $dt in $_typography {
+            $_typography-list: append($_typography-list, nth($dt, 1)) !global;
+        }
+    }
+    @if index($_using-list, $typography) {
+        @return true;
+    }
+    @if index($_typography-list, $typography) {
+        $_using-list: append($_using-list, $typography) !global;
+        @return true;
+    }
+    @error 'Typography: ' + $typography + ' not define.';
+}
+
+// --------------------------------------------------------------
+// Last Load
+// --------------------------------------------------------------
+
+@mixin LastLoad {
+    @debug 'using typography -> count: ' + length($_using-list) + ', list: ' + inspect($_using-list);
+
+    @each $dt in $_typography {
+        $font-family: nth($dt, 1);
+        @if index($_using-list, $font-family) {
+            $font-src: nth($dt, 2);
+            $font-extension: str-slice($font-src, str-index($font-src, '.') + 1);
+            @if $font-extension == 'otf' {
+                $font-extension: 'opentype';
+            }
+            @else if($font-extension == 'ttf') {
+                $font-extension: 'truetype';
+            }
+            @else {
+                @error 'Font Extension: ' + $font-extension + ' salah.';
+            }
+
+            @font-face {
+                font-family: $font-family;
+                src: url($font-src) format($font-extension);
+            }
+        }
+    }
+}

@@ -1,0 +1,264 @@
+// --------------------------------------------------------------
+// Load Use
+// --------------------------------------------------------------
+@use "sass:selector";
+@use 'sass:math';
+@use "../config" as config;
+@use "../typography" as typography;
+@use "../functions/functions" as func;
+
+// --------------------------------------------------------------
+// Temporary
+// --------------------------------------------------------------
+$_AddToTemp: ();
+
+$_temp_grouping_selector: ();
+$_temp_grouping_value: ();
+$_temp_grouping_pointer: ();
+
+// --------------------------------------------------------------
+// Validate
+// --------------------------------------------------------------
+@function _Validate($properties, $validate, $is_number: false) {
+    @each $property in $properties {
+        $property-name: nth($property, 1);
+        $property-value: nth($property, 2);
+        // @if type-of($property-value) == number {
+        @if $is_number {
+            @if not index($validate, $property-name) {
+                @warn "name " + $property-name + " not define";
+                @return false;
+            }
+            @if type-of($property-value) != number {
+                @if $property-value != inherit {
+                    @warn "value " + $property-value + " must be a number or inherit";
+                    @return false;
+                }
+            }
+        }
+        @else {
+            @if not func.mapHasValue($validate, $property-name, $property-value, true) {
+                @return false;
+            }
+        }
+    }
+    @return true;
+}
+
+@function _validate_size($properties) {
+    // daftar nama css yang menggunakan nilai number
+    $validate: (
+        width,
+        height,
+        max-width,
+        max-height,
+        min-width,
+        min-height,
+        margin-top,
+        margin-bottom,
+        margin-left,
+        margin-right,
+        gap,
+    );
+    @return _Validate($properties, $validate, true);
+}
+
+@function _validate_flexbox($properties) {
+    // flex-flow: <flex-direction> <flex-wrap>;
+    // order: <integer>;
+    // flex-grow: <number>;
+    // flex-shrink: <number>;
+    // flex-basis: <length> | auto;
+    // flex: <flex-grow> <flex-shrink> <flex-basis>;
+    $validate: (
+        display: (flex),
+        flex-direction: (row, row-reverse, column, column-reverse),
+        flex-wrap: (nowrap, wrap, wrap-reverse),
+        justify-content: (flex-start, flex-end, center, space-between, space-around, space-evenly),
+        align-items: (flex-start, flex-end, center, baseline, stretch),
+        align-content: (flex-start, flex-end, center, space-between, space-around, stretch),
+        align-self: (auto, flex-start, flex-end, center, baseline, stretch),
+    );
+    @return _Validate($properties, $validate);
+}
+
+// --------------------------------------------------------------
+// Add to Tempory
+// --------------------------------------------------------------
+@function _AddToTemp($tempPointer, $tempValue, $properties) {
+    $media: config.getBreakpointBaseChace();
+    $_AddToTemp: $tempValue !global;
+    $_value: ();
+    $num_unique: 0;   // 0 unique
+
+    // value
+    @each $property in $properties {
+        $property-name: nth($property, 1);
+        $property-value: nth($property, 2);
+        @if $property-value != null {
+            // ! merubah nilai number mejadi responsive
+            //@if type-of($property-value) == number {
+            //    $property-value: func.sizeResponsive($property-value);
+            //}
+            //$_value: func.mapAdd($_value, $property-name, $property-value);
+
+            @if type-of($property) == map {
+                @each $dt in $property {
+                    $_value: append($_value, (nth($dt, 1), nth($dt, 2)));
+                }
+            }
+            @else if type-of($property) == list {
+                $_value: append($_value, ($property-name, $property-value));
+            }
+            @else {
+                @error 'type data ' + type-of($property) + ' belum diatur';
+            }
+        }
+    }
+
+    @if not map-has-key($_AddToTemp, $media) {
+        $_AddToTemp: func.mapAdd($_AddToTemp, $media, ()) !global;
+        $tempPointer: func.mapAdd($tempPointer, $media, ());
+    } @else {
+        $num_unique: func.mapIsUnique($tempValue, $media, $_value, $isReturnNumber: true);
+    }
+
+    // 0 is unique
+    @if $num_unique == 0 {
+        $_AddToTemp: func.mapAdd($_AddToTemp, $media, $_value) !global;
+        $tempPointer: func.mapAdd($tempPointer, $media, length(map-get($_AddToTemp, $media)));
+    } @else {
+        $tempPointer: func.mapAdd($tempPointer, $media, $num_unique);
+    }
+
+    @return $tempPointer;
+}
+@mixin add($validateType, $properties...) {
+    $validate: false;
+
+    @if $validateType == flexbox {
+        $validate: _validate_flexbox($properties);
+    } @else if $validateType == size {
+        $validate: _validate_size($properties);
+    } @else if $validateType == false {
+        $validate: true;
+    } @else {
+        @warn $validateType + " not define";
+    }
+
+    @if $validate {
+        @if config.$grouping {
+            $media: config.getBreakpointBaseChace();
+            $_temp_grouping_pointer: _AddToTemp(
+                $_temp_grouping_pointer,
+                $_temp_grouping_value,
+                $properties
+            ) !global;
+            $_temp_grouping_selector: func.mapAdd($_temp_grouping_selector, $media, &) !global;
+            $_temp_grouping_value: $_AddToTemp !global;
+        } @else {
+            @each $propertie in $properties {
+                #{nth($list: $propertie, $n: 1)}: nth($list: $propertie, $n: 2);
+            }
+        }
+    }
+}
+
+// --------------------------------------------------------------
+// Other
+// --------------------------------------------------------------
+@function _fontSize($font-size, $line-height, $base) {
+    $result: ();
+    @if $font-size != false {
+        @if unit($font-size) != px {
+            @if unit($font-size) == pt {
+                @error 'belum di set';
+                //$font-size: func.ptToPx($font-size);
+                //@debug $font-size;
+                //@if $line-height == pt {
+                //    $line-height: func.ptToPx($line-height);
+                //}
+            } @else {
+                @error 'font-size unit must be px or pt';
+            }
+            @error 'font-size unit must be px or pt';
+        }
+        $result: append($result, (font-size, func.toEm($font-size, $base)));
+        @if $line-height != false {
+            @if unit($line-height) != px and unit($line-height) != pt {
+                @error 'line-height unit must be px or pt';
+            }
+            $fs: math.div($font-size, 1px);
+            $lh: math.div($line-height, 1px);
+            $lh: math.div($lh, $fs);
+            $result: append($result, (line-height, $lh));
+        }
+    }
+    @return $result;
+}
+
+@mixin fontSize($font-size:false, $line-height:false, $base: 0px) {
+    $result: _fontSize($font-size, $line-height, $base);
+    @include add(false, $result...);
+}
+
+@mixin fontStyle($font-family, $font-size:false, $line-height:false, $base: 0px) {
+    @if typography.is($font-family) {
+        $result: _fontSize($font-size, $line-height, $base);
+        $result: append($result, (font-family, $font-family));
+        @include add(false, $result...);
+    }
+}
+@mixin fontFamily($font-family) {
+    @if typography.is($font-family) {}
+}
+// --------------------------------------------------------------
+// Process
+// --------------------------------------------------------------
+@mixin _Process($nameExtend, $selectors, $value, $pointer) {
+    @each $type_media in config.getBreakpointOrder() {
+        @if map-has-key($map: $value, $key: $type_media) {
+            $_nameExtend: $nameExtend + "-" + $type_media;
+            $_selectors: map-get($map: $selectors, $key: $type_media);
+            $_pointers: map-get($map: $pointer, $key: $type_media);
+            $_values: map-get($map: $value, $key: $type_media);
+            $i: 0;
+
+            $without: false;
+            @if config.breakpointIsRoot($type_media) {
+                $without: media;
+            }
+            @media #{func.generetMedia($type_media)} {
+                @at-root (without: #{$without}) {
+                    @each $value in $_values {
+                        $i: $i + 1;
+                        %#{$_nameExtend}#{$i} {
+                            @each $_value in $value {
+                                @if nth($_value, 1) == 'content' and nth($_value, 2) == "" {
+                                    content: "";
+                                } @else {
+                                    #{nth($_value, 1)}: #{nth($_value, 2)}
+                                }
+                            }
+                        }
+                    }
+                    @for $i from 1 through length($_selectors) {
+                        #{nth($_selectors, $i)} {
+                            @extend %#{$_nameExtend}#{nth($_pointers, $i)};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// --------------------------------------------------------------
+// Last Load
+// --------------------------------------------------------------
+@mixin LastLoad() {
+    @include _Process(grouping, $_temp_grouping_selector, $_temp_grouping_value, $_temp_grouping_pointer);
+    //@debug $_temp_grouping_selector;
+    //@debug $_temp_grouping_value;
+    //@debug $_temp_grouping_pointer;
+}

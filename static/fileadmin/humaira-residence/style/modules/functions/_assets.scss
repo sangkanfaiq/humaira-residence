@@ -1,0 +1,534 @@
+@use "../config";
+@use "functions" as func;
+// ----------------------s----------------------------------------
+// Url Assets
+// Exsampel:
+// * $type        => pc or device and other
+// * $section     => sec1 and other
+// * $num         => 1 ~ and other
+// * $preload     => true or false(default)
+//
+// @use "modules/functions/assets" as asset;
+// * background-image: asset.furl($type, $section, $num, $preload);
+// * background-image: asset.furl(pc, sec1, 1, true);
+// Directory
+// |_config.scss|$assets_base_url => type => section => dpr => image
+// $assets_base_url\type\section\dpr\image
+// --------------------------------------------------------------
+$_assets: (
+    pc: (
+        logo: (
+            1: (
+                crown: "crown.png",
+                logo: "logo.png",
+                logo2: "logo2.png",
+                wa: "wa.png",
+                ig: "ig.png",
+                fb: "fb.png",
+                bg: "bg.webp",
+            ),
+        ),
+        sec1: (
+            1: (
+                bg: "bg.webp",
+                bg2: "bg2.webp",
+            ),
+        ),
+        sec2: (
+            1: (
+                left: "left.webp",
+                right: "right.webp",
+                img1: "img1.webp",
+                img2: "img2.webp",
+                img3: "img3.webp",
+                bg1: "bg1.webp",
+            ),
+        ),
+        sec3: (
+            1: (
+                interior-1: "interior-1.webp",
+                interior-2: "interior-2.webp",
+                interior-3: "interior-3.webp",
+                interior-4: "interior-4.webp",
+            ),
+        ),
+        sec4: (
+            1: (
+                jogging: "jogging.webp",
+                jog: "jog.webp",
+                top: "top.webp",
+                bottom: "bottom.webp",
+            ),
+        ),
+        sec5: (
+            1: (
+                bg1: "bg1.webp",
+                img1: "img1.webp",
+                img2: "img2.webp",
+                img3: "img3.webp",
+                img4: "img4.webp",
+            ),
+        ),
+        sec6: (
+            1: (
+                img1: "img1.webp",
+                img2: "img2.webp",
+            ),
+        ),
+        sec7: (
+            1: (
+                img1: "img1.webp",
+                img2: "img2.webp",
+            ),
+        ),
+        sec8: (
+            1: (
+                // img1: "img1.webp",
+                img2: "img2.webp",
+            ),
+        ),
+        sec9: (
+            1: (
+                // img1: "img1.webp",
+                img2: "img2.webp",
+            ),
+        ),
+        sec10: (
+            1: (
+                // img1: "img1.webp",
+                img2: "img2.webp",
+            ),
+        ),
+        sec11: (
+            1: (
+                living: "living.webp",
+                mountain: "mountain.png",
+                address: "address.png",
+                security: "security.png",
+                gate: "gate.png",
+                road: "road.png",
+                urban: "urban.png",
+                hq: "hq.png",
+                bg-dark: "bg-dark.webp",
+            ),
+        ),
+    ),
+    mb: (
+        sec1: (
+            1: (
+                kv: "kv.png",
+            ),
+        ),
+    ));
+
+
+// --------------------------------------------------------------
+// Variable Assets
+// --------------------------------------------------------------
+$_preload_variable_name: config.$assets_preload_variable_name;
+$_css_selector_name: config.$assets_css_selector_name;
+$_is_lazy: false;
+$_asset_count_vars: ();
+$_asset_buffer_types: ();
+$_asset_buffer_sections: ();
+$_asset_buffer_nums: ();
+$_asset_buffer_preloads: ();
+$_asset_buffer_pointers: ();
+$_asset_buffer_selectors: ();
+
+// --------------------------------------------------------------
+// Function Assets
+// --------------------------------------------------------------
+@function fPreload($get_variable_name_only: false) {
+    $__preload_variable_name: func.str-replace($_preload_variable_name, " ", "-");
+    @if $get_variable_name_only {
+        @return --#{$__preload_variable_name};
+    }
+    @return var(--#{$__preload_variable_name});
+}
+
+@function _fAssetsKey($type, $section) {
+    @return map-keys(map-get($_assets, $type, $section));
+}
+
+@function _fIsAssets($type, $section, $pixelRatio, $num) {
+    // Check Assets
+    $result: map-get($_assets, $type, $section, $pixelRatio);
+    @if $result {
+        // Check image
+        @if map-has-key($result, $num) {
+            @return true;
+        }
+    }
+    @return false;
+}
+
+@function _fAssets($type, $section, $pixelRatio, $num, $target: src) {
+    // Check Assets
+    @if _fIsAssets($type, $section, $pixelRatio, $num) {
+        $path: map-get($_assets, $type, $section, $pixelRatio, $num);
+        @if type-of($path) == "map" {
+            @return map-get($path, $target);
+        }
+        @return $path;
+    }
+    @return false;
+}
+
+// Generate Key and save key
+@function furl($type, $section, $num, $preload: false) {
+    $media: config.getBreakpointBaseChace();
+    $unique: true;
+    $i: 0;
+    @if map-has-key($_asset_count_vars, $media) {
+        $length: map-get($_asset_count_vars, $media);
+
+        $continue-loop: true;
+
+        @while $continue-loop {
+            $i: $i + 1;
+            @if $i >= $length {
+                $continue-loop: false; // stop while
+            }
+            @if nth(map-get($_asset_buffer_types, $media), $i) ==
+        $type and
+        nth(map-get($_asset_buffer_sections, $media), $i) ==
+        $section and
+        nth(map-get($_asset_buffer_nums, $media), $i) ==
+        $num
+            {
+                @if nth(map-get($_asset_buffer_preloads, $media), $i) ==
+          false and
+          $preload ==
+          true
+                {
+                    $new_image_buffer_preloads: set-nth(
+                            map-get($_asset_buffer_preloads, $media),
+                            $i,
+                            true
+                    );
+                    $_asset_buffer_preloads: map-merge(
+                            $_asset_buffer_preloads,
+                            (
+                                $media: $new_image_buffer_preloads,
+                            )
+                    ) !global;
+                }
+                $continue-loop: false;
+                $unique: false;
+            }
+        }
+    }
+    @if $unique {
+        $i: $i + 1;
+        $_asset_count_vars: func.mapPlus($_asset_count_vars, $media, 1) !global;
+        $_asset_buffer_types: func.mapAdd(
+                $_asset_buffer_types,
+                $media,
+                $type
+        ) !global;
+        $_asset_buffer_sections: func.mapAdd(
+                $_asset_buffer_sections,
+                $media,
+                $section
+        ) !global;
+        $_asset_buffer_nums: func.mapAdd($_asset_buffer_nums, $media, $num) !global;
+        $_asset_buffer_preloads: func.mapAdd(
+                $_asset_buffer_preloads,
+                $media,
+                $preload
+        ) !global;
+    }
+    // $_asset_buffer_pointers: func.mapPlus($_asset_buffer_pointers, $media, 1) !global;
+
+    $result: var(--#{"base-image-" + $type + "-" + $section + "-" + $num});
+    @if (not config.$assets_with_variable) {
+        $_asset_buffer_pointers: func.mapAdd(
+                $_asset_buffer_pointers,
+                $media,
+                $i
+        ) !global;
+        $_asset_buffer_selectors: func.mapAdd(
+                $_asset_buffer_selectors,
+                $media,
+                #{&}
+        ) !global;
+        $result: "#{config.$assets_base_url}" +
+      "#{$type}" +
+      "/" +
+      "#{$section}" +
+      "/";
+        @if config.$assets_add_folder_name_base_dpr {
+            $result: $result + "dpr" + "#{config.$assets_base_dpr}" + "/";
+        }
+        $result: $result +
+      "#{_fAssets($type, $section, config.$assets_base_dpr, $num)}";
+        @if $_is_lazy {
+            $_src: _fAssets($type, $section, config.$assets_base_dpr, $num, src);
+            $_has: _fAssets($type, $section, config.$assets_base_dpr, $num, has);
+            @if $_src != $_has {
+                @return (
+                    src: $result,
+                    has: _fAssets($type, $section, config.$assets_base_dpr, $num, "has")
+                );
+            }
+            @return $result;
+        }
+
+        $result: url($result);
+    }
+    @return $result;
+}
+
+// --------------------------------------------------------------
+// Mixin Assets
+// --------------------------------------------------------------
+@mixin lazy($type, $section, $num) {
+    @if config.$assets_with_variable {
+        @error "please change $assets_with_variable to false in config";
+    }
+    $_is_lazy: true !global;
+    background-image: none;
+    $rs: furl($type, $section, $num);
+    @if type-of($rs) == "map" {
+        --image-url: "#{map-get($rs, src)}";
+        $has: map-get($rs, has);
+        @if ($has) {
+            --image-has: "#{map-get($rs, has)}";
+        }
+    } @else {
+        --image-url: "#{furl($type, $section, $num)}";
+    }
+    $getHas: _fAssets($type, $section, config.$assets_base_dpr, $num, "getHas");
+    @if $getHas == "true" {
+        @debug type-of($getHas);
+        --image-get-has: "#{$getHas}";
+    }
+    $_is_lazy: false !global;
+}
+@mixin preload($type, $section, $num) {
+    $dum: furl($type, $section, $num, true);
+}
+@mixin _PrivateAssetsCreateAllVar($media) {
+    $length: map-get($_asset_count_vars, $media);
+    $types: map-get($_asset_buffer_types, $media);
+    $sections: map-get($_asset_buffer_sections, $media);
+    $nums: map-get($_asset_buffer_nums, $media);
+    $preloads: map-get($_asset_buffer_preloads, $media);
+    $pointers: map-get($_asset_buffer_pointers, $media);
+    $selectors: map-get($_asset_buffer_selectors, $media);
+
+    $pixel_ratio_list: config.$assets_base_dpr;
+    $continue-loop: true;
+    $i: 0;
+    @while $continue-loop {
+        $i: $i + 1;
+        @if $i > length($pixel_ratio_list) {
+            $continue-loop: false; // stop while
+        } @else {
+            $ratio: nth($pixel_ratio_list, $i);
+            @if $ratio == config.$assets_base_dpr {
+                // @include _PrivateAssetsCreateAllVarGeneret($length, $types, $sections, $nums, $preloads, $ratio, $pixel_ratio_list);
+                #{$_css_selector_name} {
+                    $preloads_chache: ();
+                    @for $i2 from 1 through $length {
+                        // @debug nth($sections, 1);
+                        $type: nth($types, $i2);
+                        $section: nth($sections, $i2);
+                        $num: nth($nums, $i2);
+                        $preload: nth($preloads, $i2);
+                        $var: "base-image-" + $type + "-" + $section + "-" + $num;
+
+                        @if _fIsAssets($type, $section, $ratio, $num) {
+                            $image_name: _fAssets($type, $section, $ratio, $num);
+                            $_result: config.$assets_base_url +
+                "#{$type}" +
+                "/" +
+                "#{$section}";
+                            @if config.$assets_add_folder_name_base_dpr {
+                                $_result: $_result + "/" + "dpr" + $ratio;
+                            }
+                            $_result: $_result + "/" + $image_name;
+                            $result: url($_result);
+
+                            // Generet Var
+                            @if (config.$assets_with_variable) {
+                                --#{$var}: #{$result};
+                            }
+
+                            // preload
+                            @if $preload {
+                                $__path: var(--#{$var});
+                                @if (not config.$assets_with_variable) {
+                                    $__path: $result;
+                                }
+
+                                $newpreloads_chache: append($preloads_chache, $__path);
+                                $preloads_chache: $newpreloads_chache;
+                            }
+
+                            // Check New Ratio
+                            $keys: _fAssetsKey($type, $section);
+                            @each $key in $keys {
+                                @if not index($pixel_ratio_list, $key) {
+                                    $new_pixel_ratio_list: append($pixel_ratio_list, $key);
+                                    $pixel_ratio_list: $new_pixel_ratio_list;
+                                }
+                            }
+                            @if config.$assets_debug {
+                                @debug "drp: " + $ratio + " => " + $var + ": " + $_result;
+                            }
+                        } @else {
+                            @if config.$assets_debug {
+                                @debug "drp: " + $ratio + " => " + $var + ": null";
+                            } @else if $ratio == config.$assets_base_dpr {
+                                @debug "drp: " + $ratio + " => " + $var + ": null !!!";
+                            }
+                        }
+                    }
+                    &.my-preload {
+                        @if length($preloads_chache) > 0 {
+                            #{fPreload(true)}: #{$preloads_chache};
+                        }
+                    }
+                }
+            } @else {
+                @media (-webkit-min-device-pixel-ratio: $ratio) {
+                    // @include _PrivateAssetsCreateAllVarGeneret($length, $types, $sections, $nums, $preloads, $ratio, $pixel_ratio_list);
+                    #{$_css_selector_name} {
+                        $preloads_chache: ();
+                        @for $i2 from 1 through $length {
+                            // @debug nth($sections, 1);
+                            $type: nth($types, $i2);
+                            $section: nth($sections, $i2);
+                            $num: nth($nums, $i2);
+                            $preload: nth($preloads, $i2);
+                            $var: "base-image-" + $type + "-" + $section + "-" + $num;
+
+                            @if _fIsAssets($type, $section, $ratio, $num) {
+                                $image_name: _fAssets($type, $section, $ratio, $num);
+                                $_result: config.$assets_base_url + "#{$type}" + "/";
+                                $_result: $_result +
+                  "#{$section}" +
+                  "/" +
+                  "dpr" +
+                  $ratio +
+                  "/" +
+                  $image_name;
+                                $result: url($_result);
+
+                                // Generet Var
+                                @if (config.$assets_with_variable) {
+                                    --#{$var}: #{$result};
+                                }
+
+                                // preload
+                                @if $preload {
+                                    $__path: var(--#{$var});
+                                    @if (not config.$assets_with_variable) {
+                                        $__path: $result;
+                                    }
+
+                                    $newpreloads_chache: append($preloads_chache, $__path);
+                                    $preloads_chache: $newpreloads_chache;
+                                }
+
+                                // Check New Ratio
+                                $keys: _fAssetsKey($type, $section);
+                                @each $key in $keys {
+                                    @if not index($pixel_ratio_list, $key) {
+                                        $new_pixel_ratio_list: append($pixel_ratio_list, $key);
+                                        $pixel_ratio_list: $new_pixel_ratio_list;
+                                    }
+                                }
+                                @if config.$assets_debug {
+                                    @debug "drp: " + $ratio + " => " + $var + ": " + $_result;
+                                }
+                            } @else {
+                                @if config.$assets_debug {
+                                    @debug "drp: " + $ratio + " => " + $var + ": null";
+                                } @else if $ratio == config.$assets_base_dpr {
+                                    @debug "drp: " + $ratio + " => " + $var + ": null !!!";
+                                }
+                            }
+                        }
+                        &.my-preload {
+                            @if length($preloads_chache) > 0 {
+                                #{fPreload(true)}: #{$preloads_chache};
+                            }
+                        }
+                    }
+                    // Grouping
+                    @if (not config.$assets_with_variable) {
+                        $length: length(
+                            $list: $pointers,
+                        );
+                        $_pointers: ();
+                        $_nameExtend: "assets-groups" + "#{$media}";
+
+                        @for $i from 1 through $length {
+                            $val: nth($pointers, $i);
+                            @if not index($_pointers, $val) {
+                                $type: nth($types, $val);
+                                $section: nth($sections, $val);
+                                $num: nth($nums, $val);
+                                $preload: nth($preloads, $val);
+
+                                $_pointers: append($_pointers, $val);
+                                %#{$_nameExtend}#{$val} {
+                                    // $ratio
+                                    $path: "#{config.$assets_base_url}" +
+                    "#{$type}" +
+                    "/" +
+                    "#{$section}" +
+                    "/";
+                                    @if $ratio != config.$assets_base_dpr {
+                                        $path: $path + "dpr" + "#{$ratio}" + "/";
+                                    }
+                                    $path: $path +
+                    "#{_fAssets($type, $section, config.$assets_base_dpr, $num)}";
+                                    background-image: url($path);
+                                }
+                            }
+                        }
+                        @for $i from 1 through $length {
+                            #{nth($selectors, $i)} {
+                                @extend %#{$_nameExtend}#{nth($pointers, $i)};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// --------------------------------------------------------------
+// Last Load
+// --------------------------------------------------------------
+@mixin LastLoad() {
+    // @debug "preload variable name  -> " + $_preload_variable_name;
+    // @debug "css selector name      -> " + $_css_selector_name;
+
+    // @debug "asset count vars       -> " + inspect($value: $_asset_count_vars);
+    // @debug "asset buffer types     -> " + inspect($value: $_asset_buffer_types);
+    // @debug "asset buffer sections  -> " + inspect($value: $_asset_buffer_sections);
+    // @debug "asset buffer nums      -> " + inspect($value: $_asset_buffer_nums);
+    // @debug "asset buffer preloads  -> " + inspect($value: $_asset_buffer_preloads);
+    // @debug "asset buffer pointers  -> " + inspect($value: $_asset_buffer_pointers);
+    // @debug "asset buffer selectors -> " + inspect($value: $_asset_buffer_selectors);
+
+    @each $type_media in config.getBreakpointOrder() {
+        @if map-has-key($map: $_asset_count_vars, $key: $type_media) {
+            $without: false;
+            @if config.breakpointIsRoot($type_media) {
+                $without: media;
+            }
+            @media #{func.generetMedia($type_media)} {
+                @at-root (without: #{$without}) {
+                    @include _PrivateAssetsCreateAllVar($type_media);
+                }
+            }
+        }
+    }
+}

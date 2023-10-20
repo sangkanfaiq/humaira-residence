@@ -1,0 +1,55 @@
+// --------------------------------------------------------------
+// Use
+// --------------------------------------------------------------
+
+@use "../config" as config;
+@use "../functions/functions" as func;
+@use "../mixins/groups" as g;
+// @use "images" as image;
+
+// --------------------------------------------------------------
+// Import
+// --------------------------------------------------------------
+
+
+// --------------------------------------------------------------
+// Comments
+// --------------------------------------------------------------
+@mixin comments($comments, $index: 0) {
+    @if config.$comments {
+        $line: "";
+        @if $index == 1 {
+            $line: "--------------------------------------------------------------";
+        } @else if $index >= 2 {
+            $line: "-----------------------------";
+        }
+        @if $index == 0 {
+            /* #{$comments} */
+        } @else {
+            /*
+             * #{$line}
+             * #{$comments}
+             * #{$line}
+             */
+        }
+    }
+}
+
+
+// --------------------------------------------------------------
+// Media Query
+// --------------------------------------------------------------
+$content: ();
+@mixin media($type_media) {
+    $without: media;
+    @if config.setBreakpointBaseChace($type_media) {
+        $without: false;
+    }
+
+    @media #{func.generetMedia($type_media)} {
+        @at-root (without: #{$without}) {
+            @content;
+        }
+    }
+    @include config.resetBreakpointBaseChace();
+}
