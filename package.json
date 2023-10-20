@@ -13,6 +13,7 @@
     "core-js": "^3.25.3",
     "gsap": "^3.12.2",
     "jquery": "^3.7.1",
+    "node-fetch-native": "^1.4.0",
     "nuxt": "^2.15.8",
     "sass": "^1.68.0",
     "sass-loader": "^10.1.1",
