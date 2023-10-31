@@ -1,10 +1,11 @@
 <template>
     <section class="section sec-1">
         <div class="img-bg"></div>
+        <div class="img-bg-2"></div>
         <div class="container main-1">
             <div class="text">
                 <div class="title">We help you find<br>your <span>Dream House</span></div>
-                <div class="desc">Find the comfort house with us, want to find home?<br> We are ready to help you wholeheartedly based on<br>what you need.</div>
+                <div class="desc">The best time to buy a house is now.<br> We at Humaira Residence offer solutions, not promises.<br> To get a modern residence in the center of Cianjur, contact us soon.<br> Limited units available.</div>
             </div>
         </div>
     </section>
@@ -42,10 +43,11 @@ export default {
 
 .sec-1 {
     background-color: #f6f9f8;
+    width: 100%;
 
     .img-bg {
-        background-image: asset.furl(pc, sec1, bg2);
-        width: 100vw;
+        background-image: asset.furl(pc, sec1, img1);
+        width: 100%;
         min-height: 100vh;
         position: absolute;
         background-repeat: no-repeat;
@@ -60,9 +62,10 @@ export default {
             height: 100%;
             position: absolute;
             bottom: 0;
-            background-color: rgba($color: #000, $alpha: 0.3);
+            background-color: rgba($color: #000, $alpha: 0.5);
         }
     }
+   
 
     .main-1 {
         align-items: center;

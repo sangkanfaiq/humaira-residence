@@ -1,5 +1,5 @@
 <template>
-    <section class="section sec-11">
+    <section class="section sec-particles">
         <div class="main-container">
             <div class="container content">
                 <div class="parent">
@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <div class="radius div5">
-                        <div class="img-hq"></div>
+                        <div class="img-living"></div>
                         <div class="text text-5">
-                            <div class="title">High Quality<br>Institution Nearby</div>
+                            <div class="title">Comfortable Living</div>
                         </div>
                     </div>
                     <div class="radius div6">
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                     <div class="radius div8">
-                        <div class="img-8"></div>
+                        <div class="img-hq"></div>
                         <div class="text text-8">
-                            <div class="title">Comfortable Living</div>
+                            <div class="title">High Quality<br>Institution Nearby</div>
                         </div>
                     </div>
                     <div class="radius div9">
@@ -78,7 +78,7 @@ export default {
         const tl = new TimelineMax();
 
         const AnimationSec11 = this.$scrollmagic.scene({
-            triggerElement: ".sec-11",
+            triggerElement: ".sec-particles",
             triggerHook: 0.3,
             duration: "100%",
         })
@@ -87,44 +87,44 @@ export default {
             this.$scrollmagic.addScene(AnimationSec11);
 
             this.$parent.animationPositionReset();
-            tl.to(".sec-11", 1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
-            tl.to(".sec-11", 1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.3));
-            tl.to(".sec-11", 1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", 1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
+            tl.to(".sec-particles", 1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", 1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.3));
 
             function Step1Start() {
-                $('.sec-11 .div1').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div2').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div3').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div4').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div1').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div2').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div3').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div4').css('transform', 'unset').css('opacity', 1)
             }
 
             function Step1Reverse() {
-                $('.sec-11 .div1').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div2').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div3').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div4').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div1').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div2').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div3').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div4').css('transform', 'translateY(30px)').css('opacity', 0)
             }
 
             function Step2Start() {
-                $('.sec-11 .div5').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div6').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div7').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div5').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div6').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div7').css('transform', 'unset').css('opacity', 1)
             }
 
             function Step2Reverse() {
-                $('.sec-11 .div5').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div6').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div7').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div5').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div6').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div7').css('transform', 'translateY(30px)').css('opacity', 0)
             }
 
             function Step3Start() {
-                $('.sec-11 .div8').css('transform', 'unset').css('opacity', 1)
-                $('.sec-11 .div9').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div8').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div9').css('transform', 'unset').css('opacity', 1)
             }
 
             function Step3Reverse() {
-                $('.sec-11 .div8').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-11 .div9').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div8').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div9').css('transform', 'translateY(30px)').css('opacity', 0)
             }
 
         },
@@ -139,7 +139,7 @@ export default {
 @use "static/fileadmin/humaira-residence/style/modules/functions/assets" as asset;
 
 
-.sec-11 {
+.sec-particles {
     height: 120vh;
     width: 100%;
     background-image: asset.furl(pc, sec11, bg-dark);
@@ -190,13 +190,13 @@ export default {
 
     .parent {
         display: grid;
-        grid-template-columns: repeat(4, 300px);
-        grid-template-rows: repeat(3, 200px);
+        grid-template-columns: repeat(4, func.toEm(500px));
+        grid-template-rows: repeat(3, func.toEm(350px));
         grid-column-gap: 8px;
         grid-row-gap: 8px;
 
         .radius {
-            border-radius: 10px;
+            border-radius: 20px;
         }
 
         .div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8, .div9 {
@@ -216,6 +216,8 @@ export default {
             justify-content: center;
             align-items: center;
 
+
+
             .text-1 {
                 .title {
                     @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
@@ -234,10 +236,17 @@ export default {
             align-items: center;
             flex-direction: column;
             gap: 3em;
+            overflow: hidden;
 
             background: #F7F8F8;
             background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8); 
             background: linear-gradient(to right, #ACBB78, #F7F8F8); 
+
+            &:hover {
+                .img-address {
+                    transform: scale(1.3);
+                }
+            }
 
            
             .img-address {
@@ -247,6 +256,7 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+                transition: transform .5s;
             }
 
             .text-2 {
@@ -268,11 +278,15 @@ export default {
             flex-direction: column;
             gap: 3em;
 
-            background: #000000;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: #000000;
+            background: -webkit-linear-gradient(to right, #434343, #000000); 
+            background: linear-gradient(to right, #434343, #000000);
 
-
+            &:hover {
+                .img-security {
+                    transform: scale(1.3);
+                }
+            }
 
            
             .img-security {
@@ -282,6 +296,8 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+
+                transition: transform .5s;
             }
 
             .text-2 {
@@ -298,15 +314,19 @@ export default {
         .div4 { 
             grid-area: 1 / 4 / 3 / 5; 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            position: relative;
 
             background: #fceabb;
             background: -webkit-linear-gradient(to right, #f8b500, #fceabb);
             background: linear-gradient(to right, #f8b500, #fceabb); 
 
+            &:hover {
+                .img-mountain {
+                    transform: scale(1.3);
+                }
+            }
 
             .img-mountain {
                 background-image: asset.furl(pc, sec11, mountain);
@@ -315,13 +335,11 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
-                position: absolute;
-                top: 10em;
+
+                transition: transform .5s;
             }
 
             .text-4 {
-                position: absolute;
-                bottom: 5em;
                 .title {
                     @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
                     background: #0f0c29;
@@ -335,39 +353,41 @@ export default {
         .div5 { 
             grid-area: 2 / 1 / 4 / 2; 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            position: relative;
 
-            background: #C6FFDD;
-            background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
-            background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+            background: #360033;
+            background: -webkit-linear-gradient(to right, #0b8793, #360033);
+            background: linear-gradient(to right, #0b8793, #360033);
+
+            &:hover {
+                .img-living {
+                    transform: scale(1.3);
+                }
+            }
 
 
-
-            .img-hq {
-                background-image: asset.furl(pc, sec11, hq);
-                width: func.toEm(250px);
-                height: func.toEm(250px);
+            .img-living {
+                background-image: asset.furl(pc, sec11, living);
+                width: func.toEm(450px);
+                height: func.toEm(450px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
-                position: absolute;
-                top: 10em;
+
+                transition: transform .5s;
             }
 
             .text-5 {
-                position: absolute;
-                bottom: 5em;
                 .title {
                     @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
-                    background: #0f0c29;
-                    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+                    text-align: center;
+                    background: #ECE9E6;
+                    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
+                    background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    text-align: center;
                 }
             }
         }
@@ -383,6 +403,12 @@ export default {
             background: -webkit-linear-gradient(to right, #243B55, #141E30);  
             background: linear-gradient(to right, #243B55, #141E30); 
 
+            &:hover {
+                .img-road {
+                    transform: scale(1.3);
+                }
+            }
+
            
             .img-road {
                 background-image: asset.furl(pc, sec11, road);
@@ -391,6 +417,8 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+
+                transition: transform .5s;
             }
 
             .text-6 {
@@ -416,6 +444,12 @@ export default {
             background: -webkit-linear-gradient(to right, #243B55, #141E30);  
             background: linear-gradient(to right, #243B55, #141E30); 
 
+            &:hover {
+                .img-urban {
+                    transform: scale(1.3);
+                }
+            }
+
            
             .img-urban {
                 background-image: asset.furl(pc, sec11, urban);
@@ -424,6 +458,8 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+
+                transition: transform .5s;
             }
 
             .text-7 {
@@ -442,30 +478,37 @@ export default {
             position: relative;
             display: flex;
             align-items: center;
+            justify-content: space-evenly;
+            flex-direction: row-reverse;
             padding: 0 2em;
-            background: #FFEFBA;
-            background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-            background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
 
-            
-            .img-8 {
-                background-image: asset.furl(pc, sec11, living);
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: func.toEm(348px);
-                height: func.toEm(348px);
+            background: #c31432; 
+            background: -webkit-linear-gradient(to right, #240b36, #c31432); 
+            background: linear-gradient(to right, #240b36, #c31432); 
+
+            &:hover {
+                .img-hq {
+                    transform: scale(1.3);
+                }
+            }
+
+            .img-hq {
+                background-image: asset.furl(pc, sec11, hq);
+                width: func.toEm(200px);
+                height: func.toEm(200px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+
+                transition: transform .5s;
             }
 
             .text-8 {
                 .title {
                     @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
-                    background: #0f0c29;
-                    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+                    background: #ECE9E6;
+                    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
+                    background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
@@ -483,7 +526,11 @@ export default {
             background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);
             background: linear-gradient(to right, #FAFFD1, #A1FFCE); 
 
-           
+            &:hover {
+                .img-gate {
+                    transform: scale(1.3);
+                }
+            }
 
             .img-gate {
                 background-image: asset.furl(pc, sec11, gate);
@@ -492,6 +539,8 @@ export default {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
+
+                transition: transform .5s;
             }
 
             .text-9 {

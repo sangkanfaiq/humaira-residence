@@ -209,6 +209,7 @@ export default {
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
+            border-radius: 20px;
           }
         }
 
@@ -270,6 +271,8 @@ export default {
             transition: opacity 0.5s, transform 0.5s;
             transform: translateY(50px);
             opacity: 0;
+
+            border-radius: 20px 0 20px 20px;
           }
 
           .img-bg-2 {
@@ -281,12 +284,14 @@ export default {
             position: absolute;
             top: 0;
             right: 0;
-            border: 5px solid #fff;
+            border: 3px solid #fff;
             z-index: 1;
 
             transition: opacity 0.5s, transform 0.5s;
             transform: translateY(-50px);
             opacity: 0;
+
+            border-radius: 20px 20px 20px 0;
 
           }
         }

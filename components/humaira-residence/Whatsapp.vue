@@ -41,8 +41,8 @@ export default {
 
   .img-wrapper {
     background-image: asset.furl(pc, logo, wa);
-    width: func.toEm(50px);
-    height: func.toEm(50px);
+    width: func.toEm(40px);
+    height: func.toEm(40px);
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 50%;

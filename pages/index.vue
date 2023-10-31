@@ -4,16 +4,10 @@
     <Whatsapp />
     <div class="main-content">
       <Section1 />
-      <Section11 />
+      <SectionParticles />
       <Section2 />
       <Section3 />
-      <!-- <Section4 /> -->
-      <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
-      <Section9 />
-      <Section10 />
+      <SectionUnits />
       <SectionMaps />
     </div>
     <Footer />
@@ -30,12 +24,12 @@ import Section2 from '../components/humaira-residence/Section2.vue';
 import Section3 from '../components/humaira-residence/Section3.vue';
 import Section4 from '../components/humaira-residence/Section4.vue';
 import Section5 from '../components/humaira-residence/Section5.vue';
-import Section6 from '../components/humaira-residence/Section6.vue';
+import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
 import Section7 from '../components/humaira-residence/Section7.vue';
 import Section8 from '../components/humaira-residence/Section8.vue';
 import Section9 from '../components/humaira-residence/Section9.vue';
 import Section10 from '../components/humaira-residence/Section10.vue';
-import Section11 from '../components/humaira-residence/Section11.vue';
+import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
 
 export default {
   components: {
@@ -48,12 +42,12 @@ export default {
     Section3,
     Section4,
     Section5,
-    Section6,
+    SectionUnits,
     Section7,
     Section8,
     Section9,
     Section10,
-    Section11,
+    SectionParticles,
 },
   head() {
         return {

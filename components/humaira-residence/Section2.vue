@@ -5,8 +5,8 @@
 
         <div class="main-text-2">
             <div class="text text-2-wrap">
-                <div class="subtext-1">Creating Cherished Moments :<br> The Path to a <span>Happy Family</span></div>
-                <div class="subtext-2">A happy family is a treasure beyond measure.<br> It's a haven of laughter, love, and shared experiences that create<br> bonds lasting a lifetime. At <span>Humaira Residence</span>, we understand the importance<br> of fostering joy and togetherness within your family.</div>
+                <div class="subtext-1"><span>Humaira Residence</span>,<br> a residence with numerous<br> advantages located in the center of Cianjur city<br> with a <span>tropical minimalist concept</span></div>
+                <div class="subtext-2">With a unique and <span>forward-facing facade design</span>,<br> it boasts an <span>easily accessible</span> and <span>strategic location</span>,<br> close to public amenities such as schools, shopping centers,<br> hospitals, sports facilities, and Cianjur Citimall.<br><br> Humaira Residence will be a unique dwelling with promising investment value.</div>
             </div>
         </div>
 
@@ -151,7 +151,6 @@ export default {
 
 
             this.$parent.animationPositionReset()
-            tl.to('.sec-2', .1, {}, this.$parent.animationPosition())
             tl.fromTo('.sec-2 .img-left', 2, { x: 0 }, { x: '-50vw' }, this.$parent.animationPosition(2))
             tl.fromTo('.sec-2 .img-right', 2, { x: 0 }, { x: '50vw' }, this.$parent.animationPosition())
             
@@ -377,6 +376,7 @@ export default {
                         position: absolute;
                         bottom: -10em;
                         left: 0;
+                        border-radius: 20px;
                     }
 
                     .img-bg-2 {
@@ -389,6 +389,7 @@ export default {
                         z-index: 1;
                         background-repeat: no-repeat;
                         background-size: cover;
+                        border-radius: 20px;
                     }
                 }
 
@@ -458,6 +459,7 @@ export default {
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+                        border-radius: 20px;
                         
                     }
 
@@ -466,6 +468,7 @@ export default {
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+                        border-radius: 20px;
                     }
 
                     .img-bc {
@@ -475,6 +478,7 @@ export default {
                         bottom: -10em;
                         left: -10em;
                         z-index: -1;
+                        border-radius: 20px;
 
                         transition: transform .5s, background-color .5s;
                     
@@ -520,7 +524,7 @@ export default {
 
                         .desc {
                             @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
-                            margin-top: func.toEm(50px, 30px);
+                            margin-top: func.toEm(80px, 30px);
                             position: absolute;
                             left: 0;
                         }
