@@ -13,16 +13,21 @@
         <div class="main-container">
             <div class="main-1">
                 <div class="container main-wrap-1">
-                    <div class="img-wrap-1">
+                    <div class="img-wrap-1-a">
                         <div class="img-bg-1"></div>
-                        <div class="img-bg-2"></div>
-                    </div>
-                    <div class="content-1">
-                        <div class="text">
-                        <div class="title title-m-1">Making <span>Memories</span></div>
-                        <div class="desc desc-m-1">
-                            Our mission is to help you make memories that will warm your hearts<br> for generations to come. From fun family activities to heartwarming traditions,<br> we provide the tools and inspiration to create moments you'll cherish forever.
+                        <div class="content-1">
+                            <div class="text">
+                                <div class="title title-m-1">Memoirs in Motion<br> Embracing Life's Moments as a Family</div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <div class="img-wrap-1-b">
+                        <div class="img-bg-1-b"></div>
+                        <div class="content-1-b">
+                            <div class="text">
+                                <div class="title title-m-2">Legacy Builders<br> Creating Treasured Moments<br> Among Loved Ones</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -30,18 +35,20 @@
 
             <div class="main-2">
                 <div class="container main-wrap-2">
-                    <div class="img-wrap-2">
-                        <div class="img-bg bg-1"></div>
-                        <div class="img-bc bc-1"></div>
-                    </div>
-                    <div class="content-2">
-                        <div class="text">
-                            <div class="title">Happy Neighborhood<br> Where <span>Smiles are Everywhere</span></div>
-                            <div class="desc d-1">
-                                We're not just a community; we're like a big, happy family.<br> We have fun events like festivals and block parties that bring everyone<br> together, and lifelong friendships are made here.
+                    <div class="img-wrap-2-a">
+                        <div class="img-bg-2"></div>
+                        <div class="content-2">
+                            <div class="text">
+                                <div class="title">Happy Neighborhood<br> Where Smiles are Everywhere</div>
                             </div>
-                            <div class="desc d-2">
-                                In this happy place, you'll enjoy well-kept streets and beautiful<br> gardens. The atmosphere is warm, and the people are welcoming.<br> It's perfect for a leisurely walk, a neighborhood BBQ,<br> or just relaxing in the local parks.
+                        </div>
+                    </div>
+                    
+                    <div class="img-wrap-2-b">
+                        <div class="img-bg-2-b"></div>
+                        <div class="content-2-b">
+                            <div class="text">
+                                <div class="title">Community Corner Chronicles<br> Spreading Happiness Near</div>
                             </div>
                         </div>
                     </div>
@@ -151,7 +158,7 @@ export default {
 
 
             this.$parent.animationPositionReset()
-            tl.fromTo('.sec-2 .img-left', 2, { x: 0 }, { x: '-50vw' }, this.$parent.animationPosition(2))
+            tl.fromTo('.sec-2 .img-left', 2, { x: 0 }, { x: '-50vw' }, this.$parent.animationPosition())
             tl.fromTo('.sec-2 .img-right', 2, { x: 0 }, { x: '50vw' }, this.$parent.animationPosition())
             
             tl.to('.sec-2', .1, { onStart: Subtext1Start, onReverseComplete: Subtext1Reverse }, this.$parent.animationPosition(2))
@@ -160,50 +167,6 @@ export default {
             tl.to('.sec-2', .1, { onStart: Main1Start, onReverseComplete: Main1Reverse }, this.$parent.animationPosition(2))
             tl.to(".sec-2 .main-1", 1, { x: '-100vw' }, this.$parent.animationPosition(1));
             tl.fromTo(".sec-2 .main-2", 1, { x: '100vw'}, { x: 0}, this.$parent.animationPosition());
-            
-            tl.to('.sec-2', .1, { onStart: Main2TextStart, onReverseComplete: Main2TextReverse }, this.$parent.animationPosition(0.3))
-            tl.to('.sec-2', .1, { onStart: Main2Step1Start, onReverseComplete: Main2Step1Reverse }, this.$parent.animationPosition(2))
-
-            tl.to('.sec-2', .1, {}, this.$parent.animationPosition(2))
-
-
-            function Main2Step1Start() {
-               disableTouch(1000)
-                $('.sec-2 .main-2 .img-bc').css('transform', 'translateY(-20em)')
-                $('.sec-2 .main-2 .d-1').css('transform', 'translateY(-30px)').css('opacity', 0)
-                setTimeout(()=> {
-                    $('.sec-2 .main-2 .img-bg').css('transform', 'translateX(-10em)')
-                    $('.sec-2 .main-2 .img-bc').css('transform', 'translateX(10em) translateY(-20em)').css('background-color', '#03001c')
-                    $('.sec-2 .main-2 .d-2').css('transform', 'unset').css('opacity', 1)
-                    setTimeout(()=> {
-                        $('.sec-2 .main-2 .img-bg').removeClass('bg-1').addClass('bg-2')
-                    }, 300)
-                   
-                }, 500)
-                
-            }
-
-            function Main2Step1Reverse() {
-               disableTouch(1000)
-                $('.sec-2 .main-2 .img-bc').css('transform', 'translateX(0) translateY(-20em)')
-                $('.sec-2 .main-2 .d-2').css('transform', 'translateY(30px)').css('opacity', 0)
-                setTimeout(()=> {
-                    $('.sec-2 .main-2 .img-bc').css('transform', 'translateY(0)').css('background-color', '#ffb000')
-                    $('.sec-2 .main-2 .img-bg').css('transform', 'translateX(0)')
-                    $('.sec-2 .main-2 .d-1').css('transform', 'unset').css('opacity', 1)
-                    setTimeout(()=> {
-                        $('.sec-2 .main-2 .img-bg').removeClass('bg-2').addClass('bg-1')
-                    }, 300)
-                }, 500)
-            }
-
-            function Main2TextStart() {
-                $('.sec-2 .main-2 .content-2').css('transform', 'unset').css('opacity', 1)
-            }
-
-            function Main2TextReverse() {
-                $('.sec-2 .main-2 .content-2').css('transform', 'translateX(30px)').css('opacity', 0)
-            }
 
             function Subtext1Start() {
                 $('.sec-2 .subtext-1').css('transform', 'unset').css('opacity', 1)
@@ -232,28 +195,22 @@ export default {
 
 
             function Main1Start() {
-                disableTouch(1500)
+                disableTouch(300)
                 $('.sec-2 .subtext-2').css('transform', 'translateY(-30px)').css('opacity', 0)
                 setTimeout(()=> {
-                    $('.sec-2 .main-1 .img-wrap-1').css('transform', 'unset').css('opacity', 1)
-                    setTimeout(()=> {
-                        $('.sec-2 .main-1 .title-m-1').css('transform', 'unset').css('opacity', 1)
-                        setTimeout(()=> {
-                            $('.sec-2 .main-1 .desc-m-1').css('transform', 'unset').css('opacity', 1)
-                        }, 200)
-                    }, 400)
-                }, 600)
+                    $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
+                    $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'unset').css('opacity', 1)
+                }, 300)
                 
             }
 
             function Main1Reverse() {
-                disableTouch(400)
-                $('.sec-2 .main-1 .img-wrap-1').css('transform', 'translateY(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
-                $('.sec-2 .main-1 .title-m-1').css('transform', 'translateX(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
-                $('.sec-2 .main-1 .desc-m-1').css('transform', 'translateX(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
+                disableTouch(300)
+                $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'translateY(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
+                $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'translateY(-30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 setTimeout(()=> {
                     $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
-                }, 400)
+                }, 300)
             }
         }
     }
@@ -354,71 +311,91 @@ export default {
             height: 100vh;
             width: 100vw;
             justify-content: center;
+            align-items: flex-end;
 
             .main-wrap-1 {
                 display: flex;
-                justify-content: center;
+                height: 90%;
+                width: 100%;
 
-                .img-wrap-1 {
+                .img-wrap-1-a {
                     width: 50%;
-                    height: 60%;
-                    position: relative;
-                    margin-top: 10em;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    justify-content: space-between;
+                    gap: 5em;
 
                     transform: translateY(30px);
                     transition: transform .5s, opacity .5s;
                     opacity: 0;
 
                     .img-bg-1 {
-                        background-color: #ffb000;
-                        width: 90%;
-                        height: 100%;
-                        position: absolute;
-                        bottom: -10em;
-                        left: 0;
-                        border-radius: 20px;
-                    }
-
-                    .img-bg-2 {
                         background-image: asset.furl(pc, sec2, img1);
-                        width: 90%;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        z-index: 1;
+                        width: 95%;
+                        height: 80%;
                         background-repeat: no-repeat;
                         background-size: cover;
-                        border-radius: 20px;
+                        background-position: center;
+                    }
+
+                    .content-1 {
+                        .text {
+                            background: #0f0c29;
+                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+                            background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+
+                            .title {
+                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+
+                                span {
+                                    color: #ffb000;
+                                }
+                            }
+                        }
                     }
                 }
-
-                .content-1 {
+                
+                .img-wrap-1-b {
                     width: 50%;
+                    height: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
-                    justify-content: center;
-                
+                    gap: 5em;
 
-                    .text {
-                        color: #03001c;
+                    transform: translateY(-30px);
+                    transition: transform .5s, opacity .5s;
+                    opacity: 0;
 
-                        .title-m-1, .desc-m-1 {
-                            transition: transform .5s, opacity .5s;
-                            transform: translateX(30px);
-                            opacity: 0;
-                        }
-                        .title {
-                            @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+                    .img-bg-1-b {
+                        background-image: asset.furl(pc, sec2, img4);
+                        width: 95%;
+                        height: 65%;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                    }
 
-                            span {
-                                color: #ffb000;
+                    .content-1-b {
+                        width: 95%;
+
+                        .text {
+                            background: #0f0c29;
+                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+                            background: linear-gradient(to right, #24243e, #1f1b47, #0f0c29); 
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+
+                            .title {
+                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+
+                                span {
+                                    color: #ffb000;
+                                }
                             }
-                        }
-                        .desc {
-                            @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
-                            margin-top: func.toEm(50px, 30px);
                         }
                     }
                 }
@@ -431,117 +408,86 @@ export default {
             height: 100vh;
             width: 100vw;
             justify-content: center;
+            align-items: flex-end;
 
             .main-wrap-2 {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 5em;
-                flex-direction: row-reverse;
+                height: 90%;
+                width: 100%;
 
-                .img-wrap-2 {
-                    width: 50%;
-                    height: 65%;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-
-                    .img-bg {
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-
-                        transition: .5s;
-                    }
-
-                    .bg-1 {
-                        background-image: asset.furl(pc, sec2, img2);
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        background-position: center;
-                        border-radius: 20px;
-                        
-                    }
-
-                    .bg-2 {
-                        background-image: asset.furl(pc, sec2, img3);
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        background-position: center;
-                        border-radius: 20px;
-                    }
-
-                    .img-bc {
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        bottom: -10em;
-                        left: -10em;
-                        z-index: -1;
-                        border-radius: 20px;
-
-                        transition: transform .5s, background-color .5s;
-                    
-                    }
-
-                    .bc-1 {
-                        background-color: #ffb000;
-                       
-                    }
-
-                    .bc-2 {
-                        background-color: #03001c;
-                    }
-                    
-                }
-                
-                .content-2 {
+                .img-wrap-2-a {
                     width: 50%;
                     height: 100%;
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    position: relative;
+                    flex-direction: column-reverse;
+                    justify-content: space-between;
+                    gap: 5em;
 
-                    transform: translateX(30px);
-                    transition: transform .5s, opacity .5s;
-                    opacity: 0;
+                    .img-bg-2 {
+                        background-image: asset.furl(pc, sec2, img2);
+                        width: 95%;
+                        height: 80%;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                    }
 
-                    .text {
-                        color: #03001c;
+                    .content-2 {
+                        .text {
+                            background: #0f0c29;
+                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+                            background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
 
-                        .title {
-                            @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
-                            width: 100%;
-                            left: 0;
-                            top: 10em;
-                            position: absolute;
+                            .title {
+                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
 
-                            span {
-                                color: #ffb000;
+                                span {
+                                    color: #ffb000;
+                                }
                             }
-                        }
-
-                        .desc {
-                            @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
-                            margin-top: func.toEm(80px, 30px);
-                            position: absolute;
-                            left: 0;
-                        }
-
-                        .d-1 {
-                            opacity: 1;
-                            transition: transform .5s, opacity .5s;
-                        }
-
-                        .d-2 {
-                            opacity: 0;
-                            transition: transform .5s, opacity .5s;
-                            transform: translateY(30px);
                         }
                     }
                 }
                 
+                .img-wrap-2-b {
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 5em;
+
+                    .img-bg-2-b {
+                        background-image: asset.furl(pc, sec2, img3);
+                        width: 95%;
+                        height: 65%;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                    }
+
+                    .content-2-b {
+                        width: 95%;
+
+                        .text {
+                            background: #0f0c29;
+                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+                            background: linear-gradient(to right, #24243e, #1f1b47, #0f0c29); 
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+
+                            .title {
+                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+
+                                span {
+                                    color: #ffb000;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

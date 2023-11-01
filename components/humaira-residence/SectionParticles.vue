@@ -4,8 +4,9 @@
             <div class="container content">
                 <div class="parent">
                     <div class="radius div1">
+                        <div class="img-center"></div>
                         <div class="text text-1">
-                            <div class="title">Biopore</div>
+                            <div class="title">Cianjur City Center</div>
                         </div>
                     </div>
                     <div class="radius div2">
@@ -190,7 +191,7 @@ export default {
 
     .parent {
         display: grid;
-        grid-template-columns: repeat(4, func.toEm(500px));
+        grid-template-columns: repeat(4, func.toEm(450px));
         grid-template-rows: repeat(3, func.toEm(350px));
         grid-column-gap: 8px;
         grid-row-gap: 8px;
@@ -208,19 +209,38 @@ export default {
 
         .div1 { 
             grid-area: 1 / 1 / 2 / 2;
-            background: #11998e;  
-            background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
-            background: linear-gradient(to right, #38ef7d, #11998e);
-            
+            background: #16222A;
+            background: -webkit-linear-gradient(to right, #3A6073, #16222A);
+            background: linear-gradient(to right, #3A6073, #16222A);
+
+
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            gap: 3em;
+            overflow: hidden;
 
+            &:hover {
+                .img-center {
+                    transform: scale(1.3);
+                }
+            }
 
+           
+            .img-center {
+                background-image: asset.furl(pc, sec11, center);
+                width: func.toEm(150px);
+                height: func.toEm(150px);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                transition: transform .5s;
+            }
 
             .text-1 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -261,7 +281,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -302,7 +322,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -318,9 +338,9 @@ export default {
             align-items: center;
             flex-direction: column;
 
-            background: #fceabb;
-            background: -webkit-linear-gradient(to right, #f8b500, #fceabb);
-            background: linear-gradient(to right, #f8b500, #fceabb); 
+            background: #11998e;  
+            background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
+            background: linear-gradient(to right, #38ef7d, #11998e);
 
             &:hover {
                 .img-mountain {
@@ -341,7 +361,7 @@ export default {
 
             .text-4 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -381,7 +401,7 @@ export default {
 
             .text-5 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     text-align: center;
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -423,7 +443,7 @@ export default {
 
             .text-6 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -464,7 +484,7 @@ export default {
 
             .text-7 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -478,7 +498,7 @@ export default {
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: space-around;
             flex-direction: row-reverse;
             padding: 0 2em;
 
@@ -505,7 +525,7 @@ export default {
 
             .text-8 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -545,7 +565,7 @@ export default {
 
             .text-9 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 46px, 56px);
+                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
