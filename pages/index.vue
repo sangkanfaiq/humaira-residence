@@ -22,13 +22,7 @@ import SectionMaps from '../components/humaira-residence/SectionMaps.vue';
 import Section1 from '../components/humaira-residence/Section1.vue';
 import Section2 from '../components/humaira-residence/Section2.vue';
 import Section3 from '../components/humaira-residence/Section3.vue';
-import Section4 from '../components/humaira-residence/Section4.vue';
-import Section5 from '../components/humaira-residence/Section5.vue';
 import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
-import Section7 from '../components/humaira-residence/Section7.vue';
-import Section8 from '../components/humaira-residence/Section8.vue';
-import Section9 from '../components/humaira-residence/Section9.vue';
-import Section10 from '../components/humaira-residence/Section10.vue';
 import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
 
 export default {
@@ -40,13 +34,7 @@ export default {
     Section1,
     Section2,
     Section3,
-    Section4,
-    Section5,
     SectionUnits,
-    Section7,
-    Section8,
-    Section9,
-    Section10,
     SectionParticles,
 },
   head() {
@@ -263,8 +251,8 @@ export default {
         //background-color: aqua;
 
         @include mixin.media(mb) {
-            max-width: 100vw;
-            min-width: 100vw;
+            max-width: 90vw;
+            min-width: 90vw;
         }
     }
     &.my-preload {

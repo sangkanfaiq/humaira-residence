@@ -33,7 +33,9 @@ export default {
   props: {},
   watch: {},
   mounted() {
-    this.startAnimationStep1();
+    if(this.$parent.isDevice() === "pc") {
+      this.startAnimationStep1();
+    }
   },
   methods: {
     startAnimationStep1() {

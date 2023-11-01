@@ -72,7 +72,11 @@ export default {
     watch: {
     },
     mounted() {
-       this.startAnimationStep1();
+        if(this.$parent.isDevice() === "pc") {
+            this.startAnimationStep1();
+        } else {
+            this.animationMobile();
+        }
     },
     methods: {
         startAnimationStep1() {
@@ -82,8 +86,7 @@ export default {
             triggerElement: ".sec-particles",
             triggerHook: 0.3,
             duration: "100%",
-        })
-            .setTween(tl);
+        }).setTween(tl);
 
             this.$scrollmagic.addScene(AnimationSec11);
 
@@ -129,6 +132,65 @@ export default {
             }
 
         },
+        animationMobile() {
+            const tl = new TimelineMax();
+
+            const AnimationSecParticles = this.$scrollmagic.scene({
+                triggerElement: ".sec-particles",
+                triggerHook: 0.3,
+                duration: "100%",
+            }).setTween(tl);
+
+            this.$scrollmagic.addScene(AnimationSecParticles);
+
+            this.$parent.animationPositionReset();
+            tl.to(".sec-particles", 1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
+            tl.to(".sec-particles", 1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", 1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", 1, { onStart: Step4Start, onReverseComplete: Step4Reverse }, this.$parent.animationPosition(0.3));
+
+            function Step1Start() {
+                $('.sec-particles .div1').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div2').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step1Reverse() {
+                $('.sec-particles .div1').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div2').css('transform', 'translateY(30px)').css('opacity', 0)
+            }
+
+            function Step2Start() {
+                $('.sec-particles .div3').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div4').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step2Reverse() {
+                $('.sec-particles .div3').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div4').css('transform', 'translateY(30px)').css('opacity', 0)
+            }
+
+            function Step3Start() {
+                $('.sec-particles .div5').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div6').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step3Reverse() {
+                $('.sec-particles .div5').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div6').css('transform', 'translateY(30px)').css('opacity', 0)
+            }
+
+            function Step4Start() {
+                $('.sec-particles .div7').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div8').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div9').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step4Reverse() {
+                $('.sec-particles .div7').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div8').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div9').css('transform', 'translateY(30px)').css('opacity', 0)
+            }
+        }
     }
 }
 </script>
@@ -148,6 +210,10 @@ export default {
     background-size: cover;
     background-position: center;
     position: relative;
+
+    @include mixin.media(mb) {
+        height: 100vh;
+    }
 
     &::before {
         content: "";
@@ -193,8 +259,13 @@ export default {
         display: grid;
         grid-template-columns: repeat(4, func.toEm(450px));
         grid-template-rows: repeat(3, func.toEm(350px));
-        grid-column-gap: 8px;
-        grid-row-gap: 8px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+
+        @include mixin.media(mb) {
+            grid-template-columns: repeat(2, func.toEm(300px));
+            grid-template-rows: repeat(5, func.toEm(200px));
+        }
 
         .radius {
             border-radius: 20px;
@@ -204,15 +275,19 @@ export default {
             transform: translateY(30px);
             transition: transform .5s, opacity .5s;
             opacity: 0;
+
+            @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+            }
         }
 
 
         .div1 { 
             grid-area: 1 / 1 / 2 / 2;
-            background: #16222A;
-            background: -webkit-linear-gradient(to right, #3A6073, #16222A);
-            background: linear-gradient(to right, #3A6073, #16222A);
-
+            background: #F7F8F8;
+            background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8); 
+            background: linear-gradient(to right, #ACBB78, #F7F8F8); 
 
             display: flex;
             justify-content: center;
@@ -225,6 +300,10 @@ export default {
                 .img-center {
                     transform: scale(1.3);
                 }
+            }
+
+            @include mixin.media(mb) {
+                grid-area: 1 / 1 / 2 / 2;
             }
 
            
@@ -241,9 +320,9 @@ export default {
             .text-1 {
                 .title {
                     @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
-                    background: #ECE9E6;
-                    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
-                    background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
+                    background: #0f0c29;
+                    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+                    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
@@ -258,16 +337,20 @@ export default {
             gap: 3em;
             overflow: hidden;
 
-            background: #F7F8F8;
-            background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8); 
-            background: linear-gradient(to right, #ACBB78, #F7F8F8); 
+            background: #f7ff00; 
+            background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);
+            background: linear-gradient(to right, #db36a4, #f7ff00);
+
+            @include mixin.media(mb) {
+                grid-area: 1 / 2 / 2 / 3;
+            }
+
 
             &:hover {
                 .img-address {
                     transform: scale(1.3);
                 }
             }
-
            
             .img-address {
                 background-image: asset.furl(pc, sec11, address);
@@ -301,6 +384,10 @@ export default {
             background: #000000;
             background: -webkit-linear-gradient(to right, #434343, #000000); 
             background: linear-gradient(to right, #434343, #000000);
+
+            @include mixin.media(mb) {
+                grid-area: 2 / 1 / 3 / 2;
+            }
 
             &:hover {
                 .img-security {
@@ -342,6 +429,10 @@ export default {
             background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
             background: linear-gradient(to right, #38ef7d, #11998e);
 
+            @include mixin.media(mb) {
+                grid-area: 2 / 2 / 4 / 3;
+            }
+
             &:hover {
                 .img-mountain {
                     transform: scale(1.3);
@@ -380,6 +471,10 @@ export default {
             background: #360033;
             background: -webkit-linear-gradient(to right, #0b8793, #360033);
             background: linear-gradient(to right, #0b8793, #360033);
+
+            @include mixin.media(mb) {
+                grid-area: 3 / 1 / 4 / 2;
+            }
 
             &:hover {
                 .img-living {
@@ -423,6 +518,10 @@ export default {
             background: -webkit-linear-gradient(to right, #243B55, #141E30);  
             background: linear-gradient(to right, #243B55, #141E30); 
 
+            @include mixin.media(mb) {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+
             &:hover {
                 .img-road {
                     transform: scale(1.3);
@@ -463,6 +562,10 @@ export default {
             background: #141E30;
             background: -webkit-linear-gradient(to right, #243B55, #141E30);  
             background: linear-gradient(to right, #243B55, #141E30); 
+
+            @include mixin.media(mb) {
+                grid-area: 4 / 2 / 5 / 3;
+            }
 
             &:hover {
                 .img-urban {
@@ -506,6 +609,10 @@ export default {
             background: -webkit-linear-gradient(to right, #240b36, #c31432); 
             background: linear-gradient(to right, #240b36, #c31432); 
 
+            @include mixin.media(mb) {
+                grid-area: 5 / 1 / 6 / 2;
+            }
+
             &:hover {
                 .img-hq {
                     transform: scale(1.3);
@@ -546,6 +653,10 @@ export default {
             background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);
             background: linear-gradient(to right, #FAFFD1, #A1FFCE); 
 
+            @include mixin.media(mb) {
+                grid-area: 5 / 2 / 6 / 3;
+            }
+
             &:hover {
                 .img-gate {
                     transform: scale(1.3);
@@ -576,6 +687,7 @@ export default {
             }
         }
     }
+
 }
 
 

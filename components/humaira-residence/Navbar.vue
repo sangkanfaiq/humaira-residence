@@ -43,15 +43,19 @@ export default {
   asset;
 
 .navbar {
-  background: #fff;
+  background-color: #fff;
   top: 0;
   min-height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  /* position: absolute; */
   z-index: 999;
   width: 100%;
+
+  @include mixin.media(mb) {
+    background-color: #000;
+  }
 
   .container-nav {
     min-width: 90vw;
@@ -59,6 +63,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mixin.media(mb) {
+      justify-content: center;
+    }
   }
 
   .logo-wrapper {
@@ -68,6 +76,12 @@ export default {
       height: func.toEm(50px);
       background-repeat: no-repeat;
       background-size: contain;
+
+      @include mixin.media(mb) {
+        width: func.toEm(40px);
+        height: func.toEm(40px);
+        filter: brightness(120%);
+      }
     }
   }
 
@@ -75,6 +89,10 @@ export default {
     display: flex;
     align-items: center;
     gap: 3em;
+
+    @include mixin.media(mb) {
+      display: none
+    }
 
     .content {
       .title {

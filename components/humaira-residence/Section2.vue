@@ -236,7 +236,11 @@ export default {
         height: 100%;
         position: absolute;
         top: 0;
-        left: 0
+        left: 0;
+
+        @include mixin.media(mb) {
+            display: none;
+        }
     }
 
     .img-right {
@@ -247,7 +251,11 @@ export default {
         height: 100%;
         position: absolute;
         top: 0;
-        right: 0
+        right: 0;
+
+        @include mixin.media(mb) {
+            display: none;
+        }
     }
 
     .main-text-2 {
@@ -258,6 +266,10 @@ export default {
         height: 100%;
         text-align: center;
         position: absolute;
+
+        @include mixin.media(mb) {
+            display: none;
+        }
 
         .text-2-wrap {
             position: absolute;
