@@ -80,14 +80,27 @@ export default {
   flex-direction: column-reverse;
   height: 150vh;
 
+  @include mixin.media(mb) {
+    height: 100vh;
+  }
+
   .main-container {
     height: 70vh;
+
+    @include mixin.media(mb) {
+      height: 30vh;
+    }
   }
 
   .main-1 {
     transform: translateY(30px);
     transition: transform .5s, opacity .5s;
     opacity: 0;
+
+    @include mixin.media(mb) {
+      transform: unset;
+      opacity: 1;
+    }
   }
 
   .text-1 {
@@ -98,7 +111,7 @@ export default {
     text-align: center;
 
     .title {
-      @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 72px, 90px);
+      @include g.fontStyle(AktivGroteskEx-Bold, 72px, 90px);
       background: #0f0c29;
       background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
       background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
@@ -106,13 +119,13 @@ export default {
       -webkit-text-fill-color: transparent;
     }
     .desc {
-      @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 32px);
+      @include g.fontStyle(AktivGroteskEx-Regular, 28px, 32px);
       color: #878a8f;
       letter-spacing: 0.3em;
       margin-top: func.toEm(60px, 28px);
     }
     .desc-2 {
-      @include g.fontStyle(HelveticaNowDisplay-Regular, 32px, 46px);
+      @include g.fontStyle(AktivGroteskEx-Regular, 32px, 46px);
       color: #03001c;
       margin-top: func.toEm(20px, 32px);
     }
@@ -122,6 +135,11 @@ export default {
     width: 100%;
     height: 80vh;
     filter: grayscale(0%) invert(100%) contrast(100%) hue-rotate(180deg);
+
+    @include mixin.media(mb) {
+      width: calc(100vw - 10vw);
+      height: 60vh;
+    }
   }
 }
 

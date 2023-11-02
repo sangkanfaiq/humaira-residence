@@ -1,5 +1,18 @@
 <template>
     <section class="section sec-unit">
+
+      <div class="side-text">
+          <div class="bullet-group">
+            <div class="bullets"></div>
+            <div class="bullets"></div>
+          </div>
+          <div class="text">
+            <div class="title ts-1">Perspective & Specifications</div>
+          </div>
+          <div class="outer-circle"></div>
+          <div class="dots"></div>
+      </div>
+
       <div class="container main-container">
 
         <div class="text-center">
@@ -7,16 +20,6 @@
             <div class="title center-1">72/105</div>
             <div class="title center-2">48/84</div>
           </div>
-        </div>
-
-        <div class="text side-text">
-          <div class="title ts-1">TYPE 72/105</div>
-          <div class="title ts-2">TYPE 48/84</div>
-          <div class="title ts-3">TYPE 45/78</div>
-          <div class="title ts-4">TYPE 36/72</div>
-          <div class="title ts-5">TYPE 36/66</div>
-          <div class="title ts-6">TYPE 36/60</div>
-          <div class="title ts-7">TYPE 36/60 SPECIAL</div>
         </div>
 
         <div class="main-1">
@@ -629,12 +632,10 @@
           disableTouch(600)
           $('.sec-unit .img-bg-main-13').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .d-6').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-6').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-14').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-7').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-7').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }
@@ -642,12 +643,10 @@
         function Step20Reverse() {
           disableTouch(600)
           $('.sec-unit .tc-7').css('transform', 'translateX(50px)').css('opacity', 0)
-          $('.sec-unit .ts-7').css('transform', 'translateX(30px) rotate(-90deg)').css('opacity', 0)
           $('.sec-unit .img-bg-main-14').css('transform', 'translateX(30px)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-13').css('transform', 'unset').css('opacity', 1)
             $('.sec-unit .d-6').css('transform', 'unset').css('opacity', 1)
-            $('.sec-unit .ts-6').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
           }, 200)
         }
 
@@ -694,12 +693,10 @@
           disableTouch(600)
           $('.sec-unit .img-bg-main-11').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .d-5').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-5').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-12').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-6').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-6').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }
@@ -707,12 +704,10 @@
         function Step17Reverse() {
           disableTouch(600)
           $('.sec-unit .tc-6').css('transform', 'translateX(50px)').css('opacity', 0)
-          $('.sec-unit .ts-6').css('transform', 'translateX(30px) rotate(-90deg)').css('opacity', 0)
           $('.sec-unit .img-bg-main-12').css('transform', 'translateX(30px)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-11').css('transform', 'unset').css('opacity', 1)
             $('.sec-unit .d-5').css('transform', 'unset').css('opacity', 1)
-            $('.sec-unit .ts-5').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
           }, 200)
         }
 
@@ -758,12 +753,10 @@
           disableTouch(600)
           $('.sec-unit .img-bg-main-9').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .d-4').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-4').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-10').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-5').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-5').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }  
@@ -771,12 +764,10 @@
         function Step14Reverse() {
           disableTouch(600)
           $('.sec-unit .tc-5').css('transform', 'translateX(50px)').css('opacity', 0)
-          $('.sec-unit .ts-5').css('transform', 'translateX(30px) rotate(-90deg)').css('opacity', 0)
           $('.sec-unit .img-bg-main-10').css('transform', 'translateX(30px)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-9').css('transform', 'unset').css('opacity', 1)
             $('.sec-unit .d-4').css('transform', 'unset').css('opacity', 1)
-            $('.sec-unit .ts-4').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
           }, 200)
         }
 
@@ -822,12 +813,10 @@
           disableTouch(600)
           $('.sec-unit .img-bg-main-7').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .d-3').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-3').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-8').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-4').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-4').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }
@@ -886,12 +875,10 @@
           disableTouch(600)
           $('.sec-unit .img-bg-main-5').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .d-2').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-2').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-6').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-3').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-3').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }
@@ -900,11 +887,9 @@
           disableTouch(500)
           $('.sec-unit .img-bg-main-6').css('transform', 'translateX(50px)').css('opacity', 0)
           $('.sec-unit .tc-3').css('transform', 'translateX(50px)').css('opacity', 0)
-          $('.sec-unit .ts-3').css('transform', 'translateX(30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-5').css('transform', 'unset').css('opacity', 1)
             $('.sec-unit .d-2').css('transform', 'unset').css('opacity', 1)
-            $('.sec-unit .ts-2').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
           }, 200)
         }
 
@@ -951,12 +936,10 @@
           disableTouch(600)
           $('.sec-unit .d-1').css('transform', 'translateX(-50px)').css('opacity', 0)
           $('.sec-unit .img-bg-main-3').css('transform', 'translateX(-50px)').css('opacity', 0)
-          $('.sec-unit .ts-1').css('transform', 'translateX(-30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .img-bg-main-4').css('transform', 'unset').css('opacity', 1)
             setTimeout(()=> {
               $('.sec-unit .tc-2').css('transform', 'unset').css('opacity', 1)
-              $('.sec-unit .ts-2').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
             }, 300)
           }, 200)
         }
@@ -965,11 +948,9 @@
           disableTouch(500)
           $('.sec-unit .tc-2').css('transform', 'translateX(50px)').css('opacity', 0)
           $('.sec-unit .img-bg-main-4').css('transform', 'translateX(50px)').css('opacity', 0)
-          $('.sec-unit .ts-2').css('transform', 'translateX(30px) rotate(-90deg)').css('opacity', 0)
           setTimeout(()=> {
             $('.sec-unit .d-1').css('transform', 'unset').css('opacity', 1)
             $('.sec-unit .img-bg-main-3').css('transform', 'unset').css('opacity', 1)
-            $('.sec-unit .ts-1').css('transform', 'translateX(0) rotate(-90deg)').css('opacity', 1)
           }, 200)
         }
 
@@ -1049,6 +1030,64 @@
     /* background-color: #000; */
     width: 100%;
 
+    .side-text {
+        position: absolute;
+        left: -17.5em;
+        display: flex;
+        align-items: center;
+        transform: rotate(-90deg);
+
+        .dots {
+          width: func.toEm(10px);  
+          height: func.toEm(10px);
+          border-radius: 50%;
+          background-color: #000;
+          margin: 0 2em;
+        }
+
+        .outer-circle {
+          width: func.toEm(25px);  
+          height: func.toEm(25px);
+          border-radius: 50%;
+          border: 1px solid #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 74%;
+            height: 74%;
+            position: absolute;
+            background-color: #000;
+            border-radius: 50%;
+          }
+        }
+
+        .bullet-group {
+          display: flex;
+          align-items: center;
+          gap: 2em;
+
+          .bullets {
+            width: func.toEm(8px);  
+            height: func.toEm(8px);
+            border-radius: 50%;
+            background-color: #000;
+          }
+        }
+        
+        .title {
+          @include g.fontStyle(AktivGroteskEx-Regular, 18px, 22px);
+          color: #000;
+          text-align: center;
+          width: max-content;
+          padding: 0 2em;
+        }
+    }
+
     .main-container {
 
       .text-center {
@@ -1073,37 +1112,10 @@
         }
 
         .title {
-          @include g.fontStyle(HelveticaNowDisplay-Bold, 250px, 250px);
+          @include g.fontStyle(AktivGroteskEx-Bold, 300px, 250px);
           color: #f2f2f2;
           text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
           position: absolute;
-        }
-      }
-
-
-      .side-text {
-        position: relative;
-        background-color: #0f0c29;
-
-        .ts-1 {
-          transition: transform .5s, opacity .5s;
-        }
-        .ts-2, .ts-3, .ts-4, .ts-5, .ts-6, .ts-7 {
-          opacity: 0;
-          transform: translateX(30px);
-          transition: transform .5s, opacity .5s;
-        }
-        
-        .title {
-          transform: rotate(-90deg);
-          @include g.fontStyle(HelveticaNowDisplay-Bold, 24px, 32px);
-          position: absolute;
-          left: -16em;
-          width: 400px;
-          text-align: center;
-          top: 50%;
-          color: #cac531;
-          letter-spacing: 3px;
         }
       }
 
@@ -1147,7 +1159,7 @@
                 top: 50%;
                 right: 10%;
 
-                @include g.fontStyle(HelveticaNowDisplay-Medium, 24px, 32px);
+                @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
               }
             }
 
@@ -1175,7 +1187,7 @@
                 bottom: 50%;
                 top: 50%;
 
-                @include g.fontStyle(HelveticaNowDisplay-Medium, 24px, 32px);
+                @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
               }
             }
 
@@ -1291,7 +1303,7 @@
               -webkit-text-fill-color: transparent;
               text-align: center;
               
-              @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 90px, 120px);
+              @include g.fontStyle(AktivGroteskEx-Bold, 80px, 96px);
             }
           }
 
@@ -1321,7 +1333,7 @@
 
             .desc {
               position: absolute;
-              @include g.fontStyle(HelveticaNowDisplay-Regular, 22px, 32px);
+              @include g.fontStyle(AktivGroteskEx-Regular, 22px, 38px);
               color: #000;
 
               .content {
@@ -1393,7 +1405,7 @@
             }
 
             .img-bg-main-8 {
-              background-image: asset.furl(pc, sec6, c1);
+              background-image: asset.furl(pc, sec6, d1);
               width: 100%;
               height: 90%;
               background-repeat: no-repeat;
@@ -1407,7 +1419,7 @@
             }
             
             .img-bg-main-10 {
-              background-image: asset.furl(pc, sec6, c1);
+              background-image: asset.furl(pc, sec6, d1);
               width: 100%;
               height: 90%;
               background-repeat: no-repeat;
@@ -1421,7 +1433,7 @@
             }
 
             .img-bg-main-12 {
-              background-image: asset.furl(pc, sec6, c1);
+              background-image: asset.furl(pc, sec6, d1);
               width: 100%;
               height: 90%;
               background-repeat: no-repeat;
@@ -1435,7 +1447,7 @@
             }
 
             .img-bg-main-14 {
-              background-image: asset.furl(pc, sec6, c1);
+              background-image: asset.furl(pc, sec6, d1);
               width: 100%;
               height: 90%;
               background-repeat: no-repeat;

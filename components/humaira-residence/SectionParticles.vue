@@ -259,8 +259,8 @@ export default {
         display: grid;
         grid-template-columns: repeat(4, func.toEm(450px));
         grid-template-rows: repeat(3, func.toEm(350px));
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
+        grid-column-gap: func.toEm(10px);
+        grid-row-gap: func.toEm(10px);
 
         @include mixin.media(mb) {
             grid-template-columns: repeat(2, func.toEm(300px));
@@ -268,7 +268,7 @@ export default {
         }
 
         .radius {
-            border-radius: 20px;
+            border-radius: func.toEm(20px);
         }
 
         .div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8, .div9 {
@@ -298,7 +298,7 @@ export default {
 
             &:hover {
                 .img-center {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -319,7 +319,7 @@ export default {
 
             .text-1 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -348,7 +348,7 @@ export default {
 
             &:hover {
                 .img-address {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
            
@@ -364,7 +364,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -391,7 +391,7 @@ export default {
 
             &:hover {
                 .img-security {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -409,7 +409,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -435,7 +435,7 @@ export default {
 
             &:hover {
                 .img-mountain {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -452,7 +452,7 @@ export default {
 
             .text-4 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -478,7 +478,7 @@ export default {
 
             &:hover {
                 .img-living {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -496,7 +496,7 @@ export default {
 
             .text-5 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     text-align: center;
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -524,7 +524,7 @@ export default {
 
             &:hover {
                 .img-road {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -542,7 +542,7 @@ export default {
 
             .text-6 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -569,7 +569,7 @@ export default {
 
             &:hover {
                 .img-urban {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -587,7 +587,7 @@ export default {
 
             .text-7 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -615,14 +615,14 @@ export default {
 
             &:hover {
                 .img-hq {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
             .img-hq {
                 background-image: asset.furl(pc, sec11, hq);
-                width: func.toEm(200px);
-                height: func.toEm(200px);
+                width: func.toEm(150px);
+                height: func.toEm(150px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -632,7 +632,7 @@ export default {
 
             .text-8 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -659,7 +659,7 @@ export default {
 
             &:hover {
                 .img-gate {
-                    transform: scale(1.3);
+                    transform: scale(1.1);
                 }
             }
 
@@ -676,7 +676,7 @@ export default {
 
             .text-9 {
                 .title {
-                    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 36px, 46px);
+                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 

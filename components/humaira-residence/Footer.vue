@@ -132,6 +132,7 @@ export default {
     justify-content: center;
     width: 100%;
     height: 100%;
+
   }
 
   .bottom {
@@ -144,7 +145,7 @@ export default {
 
     .text {
         .desc {
-            @include g.fontStyle(HelveticaNowDisplay-Regular, 22px, 28px);
+            @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
             color: gray;
         }
     }
@@ -175,10 +176,14 @@ export default {
   .main-1 {
     display: flex;
     justify-content: space-between;
+
+    @include mixin.media(mb) {
+      flex-direction: column;
+    }
   }
 
   .title-footer {
-    @include g.fontStyle(HelveticaNowDisplay-ExtraBold, 16px, 24px);
+    @include g.fontStyle(AktivGroteskEx-Bold, 16px, 24px);
     color: #fff;
   }
 
@@ -190,8 +195,14 @@ export default {
     .info-sec {
       color: #fff;
 
+      @include mixin.media(mb) {
+        br {
+          display: none;
+        }
+      }
+
       .info {
-        @include g.fontStyle(HelveticaNowDisplay-Regular, 24px, 28px);
+        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
       }
     }
 
@@ -199,10 +210,10 @@ export default {
       margin: 1em 0;
       display: flex;
       flex-direction: column;
-      gap: 0.5em;
+      gap: 1em;
 
       .label {
-        @include g.fontStyle(HelveticaNowDisplay-Regular, 24px, 28px);
+        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
         color: #fff;
       }
 
@@ -229,7 +240,7 @@ export default {
 
     .units {
       .text-units {
-        @include g.fontStyle(HelveticaNowDisplay-Regular, 24px, 28px);
+        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
         color: #fff;
       }
     }
@@ -278,7 +289,7 @@ export default {
       }
 
       .text-social {
-        @include g.fontStyle(HelveticaNowDisplay-Regular, 24px, 28px);
+        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
         color: #fff;
         margin-left: 0.5em;
       }

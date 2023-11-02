@@ -6,7 +6,7 @@
         <div class="main-text-2">
             <div class="text text-2-wrap">
                 <div class="subtext-1"><span>Humaira Residence</span>,<br> a residence with numerous<br> advantages located in the center of Cianjur city<br> with a <span>tropical minimalist concept</span></div>
-                <div class="subtext-2">With a unique and <span>forward-facing facade design</span>,<br> it boasts an <span>easily accessible</span> and <span>strategic location</span>,<br> close to public amenities such as schools, shopping centers,<br> hospitals, sports facilities, and Cianjur Citimall.<br><br> Humaira Residence will be a unique dwelling with promising investment value.</div>
+                <div class="subtext-2">With a unique and <span>forward-facing facade design</span>,<br> it boasts an <span>easily accessible</span> and <span>strategic location</span>,<br> close to public amenities such as schools, shopping centers,<br> hospitals, sports facilities, and Cianjur Citimall.<br class="mb"><br class="mb"> Humaira Residence will be a unique dwelling with<br> promising investment value.</div>
             </div>
         </div>
 
@@ -17,7 +17,8 @@
                         <div class="img-bg-1"></div>
                         <div class="content-1">
                             <div class="text">
-                                <div class="title title-m-1">Memoirs in Motion<br> Embracing Life's Moments as a Family</div>
+                                <div class="title">Memoirs in Motion</div>
+                                <div class="desc">Embracing Life's Moments as a Family</div>
                             </div>
                         </div>
                     </div>
@@ -26,7 +27,8 @@
                         <div class="img-bg-1-b"></div>
                         <div class="content-1-b">
                             <div class="text">
-                                <div class="title title-m-2">Legacy Builders<br> Creating Treasured Moments<br> Among Loved Ones</div>
+                                <div class="title">Legacy Builders</div>
+                                <div class="desc">Creating Treasured Moments<br> Among Loved Ones</div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +41,8 @@
                         <div class="img-bg-2"></div>
                         <div class="content-2">
                             <div class="text">
-                                <div class="title">Happy Neighborhood<br> Where Smiles are Everywhere</div>
+                                <div class="title">Happy Neighborhood</div>
+                                <div class="desc">Where Smiles are Everywhere</div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +51,8 @@
                         <div class="img-bg-2-b"></div>
                         <div class="content-2-b">
                             <div class="text">
-                                <div class="title">Community Corner Chronicles<br> Spreading Happiness Near</div>
+                                <div class="title">Community Corner Chronicles</div>
+                                <div class="desc">Spreading Happiness Near</div>
                             </div>
                         </div>
                     </div>
@@ -71,6 +75,8 @@ export default {
     mounted() {
         if(this.$parent.isDevice() === "pc") {
             this.Step1Animation()
+        } else {
+            this.AnimationMb()
         }
     },
     methods: {
@@ -151,7 +157,7 @@ export default {
             const animationSec2 = this.$scrollmagic.scene({
                 triggerElement: '.sec-2',
                 triggerHook: 0.0,
-                duration: '700%',
+                duration: '500%',
             }).setTween(tl).setPin('.sec-2')
 
             this.$scrollmagic.addScene(animationSec2)
@@ -195,22 +201,145 @@ export default {
 
 
             function Main1Start() {
-                disableTouch(300)
+                disableTouch(200)
                 $('.sec-2 .subtext-2').css('transform', 'translateY(-30px)').css('opacity', 0)
                 setTimeout(()=> {
                     $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
                     $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'unset').css('opacity', 1)
-                }, 300)
+                }, 200)
                 
             }
 
             function Main1Reverse() {
-                disableTouch(300)
+                disableTouch(200)
                 $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'translateY(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'translateY(-30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 setTimeout(()=> {
                     $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
-                }, 300)
+                }, 200)
+            }
+        },
+        AnimationMb() {
+            let stop_keyboard_mouse = false;
+
+            function disableScroll(duration = 0) {
+                console.log('disableScroll: ', duration);
+                stop_keyboard_mouse = true;
+                if (duration !== 0) {
+                    setTimeout(() => {
+                        console.log('disableScroll: bypass');
+                        stop_keyboard_mouse = false;
+                    }, duration);
+                }
+            }
+            document.addEventListener("mousemove", function(event) {
+                if (stop_keyboard_mouse) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                } else {
+                    mouseX = event.clientX;
+                    mouseY = event.clientY;
+                }
+            },{ passive: false });
+            document.addEventListener("keydown", function(event) {
+                if (stop_keyboard_mouse) {
+                    event.stopPropagation();
+                }
+                event.preventDefault();
+            },{ passive: false });
+            document.addEventListener("mousewheel", function(event) {
+                if (stop_keyboard_mouse) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                }
+            }, { passive: false });
+            
+            let isScrollingTouchDisabled = false;
+            let lastScrollTouchPosition = 0;
+
+            function disableTouch(stopDuration) {
+                disableScroll(stopDuration)
+                stopSTouch(stopDuration);
+            }
+            function disableScrollingTouch() {
+                isScrollingTouchDisabled = true;
+            }
+            function enableScrollingTouch() {
+                isScrollingTouchDisabled = false;
+            }
+            function stopSTouch(duration) {
+                disableScrollingTouch();
+                setTimeout(enableScrollingTouch, duration);
+            }
+
+            window.addEventListener('scroll', function() {
+                if (isScrollingTouchDisabled) {
+                    window.scrollTo(0, lastScrollTouchPosition);
+                } else {
+                    lastScrollTouchPosition = window.pageYOffset;
+                }
+            },{ passive: false });
+            document.body.addEventListener('touchmove', function(event) {
+                if (isScrollingTouchDisabled) {
+                    event.preventDefault();
+                    window.scrollTo(0, lastScrollTouchPosition);
+                }
+            }, { passive: false });
+            document.body.addEventListener('touchend', function(event) {
+                if (isScrollingTouchDisabled) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+            const tl = new TimelineMax()
+
+            const animationSec2Mobile = this.$scrollmagic.scene({
+                triggerElement: '.sec-2',
+                triggerHook: 0.0,
+                duration: '100%',
+            }).setTween(tl).setPin('.sec-2')
+
+            this.$scrollmagic.addScene(animationSec2Mobile)
+
+            this.$parent.animationPositionReset()
+            tl.to(".sec-2", 1, {}, this.$parent.animationPosition());
+            tl.to(".sec-2", 1, {onStart: Step1, onReverseComplete: Step1Reverse}, this.$parent.animationPosition(1));
+            tl.to(".sec-2", 1, {onStart: Step2, onReverseComplete: Step2Reverse}, this.$parent.animationPosition(1));
+            tl.fromTo(".sec-2 .main-1", 1, { x: 0},  {x: '-100vw' }, this.$parent.animationPosition(1));
+            tl.fromTo(".sec-2 .main-2", 1, { x: '100vw'}, { x: 0}, this.$parent.animationPosition());
+
+            function Step2() {
+                disableTouch(300)
+                $('.sec-2 .subtext-2').css('transform', 'translateY(-30px)').css('opacity', 0)
+                setTimeout(()=> {
+                    $('.sec-2 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
+                    $('.sec-2 .img-wrap-1-b').css('transform', 'unset').css('opacity', 1)
+                }, 200)
+            }
+
+            function Step2Reverse() {
+                disableTouch(300)
+                $('.sec-2 .img-wrap-1-a').css('transform', 'translateY(-30px)').css('opacity', 0)
+                $('.sec-2 .img-wrap-1-b').css('transform', 'translateY(30px)').css('opacity', 0)
+                setTimeout(()=> {
+                    $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
+                }, 200)
+            }
+
+            function Step1() {
+                disableTouch(300)
+                $('.sec-2 .subtext-1').css('transform', 'translateY(-30px)').css('opacity', 0)
+                setTimeout(()=> {
+                    $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
+                }, 200)
+            }
+
+            function Step1Reverse() {
+                disableTouch(300)
+                $('.sec-2 .subtext-2').css('transform', 'translateY(30px)').css('opacity', 0)
+                setTimeout(()=> {
+                    $('.sec-2 .subtext-1').css('transform', 'unset').css('opacity', 1)
+                }, 200)
             }
         }
     }
@@ -226,7 +355,7 @@ export default {
 
 .sec-2 {
     position: relative;
-    
+    width: 100%;    
 
     .img-left {
         background-image: asset.furl(pc, sec2, left);
@@ -268,7 +397,8 @@ export default {
         position: absolute;
 
         @include mixin.media(mb) {
-            display: none;
+            text-align: unset;
+            width: 90vw;
         }
 
         .text-2-wrap {
@@ -280,7 +410,7 @@ export default {
         }
 
         .subtext-1 {
-            @include g.fontStyle(HelveticaNowDisplay-Bold, 48px, 64px);
+            @include g.fontStyle(AktivGroteskEx-Medium, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
@@ -289,12 +419,21 @@ export default {
             transition: transform .5s, opacity .5s;
             opacity: 0;
 
+            @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+
+                br {
+                    display: none;
+                }
+            }
+
             span {
-                color: #ffb000;
+                color: #cac531;
             }
         }
         .subtext-2 {
-            @include g.fontStyle(HelveticaNowDisplay-Bold, 48px, 64px);
+            @include g.fontStyle(AktivGroteskEx-Medium, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
@@ -303,8 +442,22 @@ export default {
             transition: transform .5s, opacity .5s;
             opacity: 0;
 
+            br {
+                display: block;
+            }
+
+            @include mixin.media(mb) {
+                br {
+                    display: none;
+                }
+
+                .mb {
+                    display: block;
+                }
+            }
+
             span {
-                color: #ffb000;
+                color: #cac531;
             }
         }
 
@@ -317,6 +470,10 @@ export default {
         position: relative;
         transition: .5s;
 
+        @include mixin.media(mb) {
+            display: unset;
+        }
+
         .main-1 {
             display: flex;
             position: absolute;
@@ -325,10 +482,19 @@ export default {
             justify-content: center;
             align-items: flex-end;
 
+            @include mixin.media(mb) {
+                width: 0;
+            }
+
             .main-wrap-1 {
                 display: flex;
                 height: 90%;
                 width: 100%;
+                gap: func.toEm(100px);
+
+                @include mixin.media(mb) {
+                    flex-direction: column;
+                }
 
                 .img-wrap-1-a {
                     width: 50%;
@@ -342,13 +508,25 @@ export default {
                     transition: transform .5s, opacity .5s;
                     opacity: 0;
 
+                    @include mixin.media(mb) {
+                        width: 100%;
+                        /* transform: unset;
+                        opacity: 1; */
+                        justify-content: space-evenly;
+                    }
+
                     .img-bg-1 {
                         background-image: asset.furl(pc, sec2, img1);
-                        width: 95%;
+                        width: 100%;
                         height: 80%;
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+
+                        @include mixin.media(mb) {
+                            width: 100%;
+                            height: 50%;
+                        }
                     }
 
                     .content-1 {
@@ -360,11 +538,11 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
-
-                                span {
-                                    color: #ffb000;
-                                }
+                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                            }
+                            .desc {
+                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                margin-top: func.toEm(30px, 32px);
                             }
                         }
                     }
@@ -382,17 +560,28 @@ export default {
                     transition: transform .5s, opacity .5s;
                     opacity: 0;
 
+                    @include mixin.media(mb) {
+                        width: 100%;
+                        /* transform: unset;
+                        opacity: 1; */
+                    }
+
                     .img-bg-1-b {
                         background-image: asset.furl(pc, sec2, img4);
-                        width: 95%;
+                        width: 100%;
                         height: 65%;
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+
+                        @include mixin.media(mb) {
+                            width: 100%;
+                            height: 50%;
+                        }
                     }
 
                     .content-1-b {
-                        width: 95%;
+                        width: 100%;
 
                         .text {
                             background: #0f0c29;
@@ -402,11 +591,11 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
-
-                                span {
-                                    color: #ffb000;
-                                }
+                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                            }
+                            .desc {
+                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                margin-top: func.toEm(30px, 32px);
                             }
                         }
                     }
@@ -422,10 +611,20 @@ export default {
             justify-content: center;
             align-items: flex-end;
 
+            @include mixin.media(mb) {
+                width: 0;
+
+            }
+
             .main-wrap-2 {
                 display: flex;
                 height: 90%;
                 width: 100%;
+                gap: func.toEm(100px);
+
+                @include mixin.media(mb) {
+                    flex-direction: column;
+                }
 
                 .img-wrap-2-a {
                     width: 50%;
@@ -435,13 +634,23 @@ export default {
                     justify-content: space-between;
                     gap: 5em;
 
+                    @include mixin.media(mb) {
+                        width: 100%;
+                        justify-content: space-evenly;
+                    }
+
                     .img-bg-2 {
                         background-image: asset.furl(pc, sec2, img2);
-                        width: 95%;
+                        width: 100%;
                         height: 80%;
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+
+                        @include mixin.media(mb) {
+                            width: 100%;
+                            height: 50%;
+                        }
                     }
 
                     .content-2 {
@@ -453,11 +662,11 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
-
-                                span {
-                                    color: #ffb000;
-                                }
+                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                            }
+                            .desc {
+                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                margin-top: func.toEm(30px, 32px);
                             }
                         }
                     }
@@ -471,17 +680,28 @@ export default {
                     align-items: flex-end;
                     gap: 5em;
 
+                    @include mixin.media(mb) {
+                        width: 100%;
+                        justify-content: space-evenly;
+                        flex-direction: column-reverse;
+                    }
+
                     .img-bg-2-b {
                         background-image: asset.furl(pc, sec2, img3);
-                        width: 95%;
+                        width: 100%;
                         height: 65%;
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
+
+                        @include mixin.media(mb) {
+                            width: 100%;
+                            height: 50%;
+                        }
                     }
 
                     .content-2-b {
-                        width: 95%;
+                        width: 100%;
 
                         .text {
                             background: #0f0c29;
@@ -491,11 +711,11 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
-
-                                span {
-                                    color: #ffb000;
-                                }
+                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                            }
+                            .desc {
+                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                margin-top: func.toEm(30px, 32px);
                             }
                         }
                     }

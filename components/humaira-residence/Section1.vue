@@ -73,8 +73,8 @@ export default {
         .text {
             color: #f5feff;
             .title {
-                @include g.fontStyle(HelveticaNowDisplay-Bold, 90px, 90px);
-
+                @include g.fontStyle(AktivGroteskEx-Bold, 90px, 90px);
+                font-weight: 600;
                 transform: translateY(30px);
                 opacity: 0;
                 transition: transform .5s, opacity .5s;
@@ -86,9 +86,8 @@ export default {
             }
 
             .desc {
-                @include g.fontStyle(HelveticaNowDisplay-Regular, 32px, 45px);
+                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 45px);
                 margin-top: func.toEm(50px, 32px);
-
                 transform: translateY(30px);
                 opacity: 0;
                 transition: transform .5s, opacity .5s;

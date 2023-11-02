@@ -1,5 +1,16 @@
 <template>
   <section class="section sec-3">
+    <div class="side-text">
+          <div class="bullet-group">
+            <div class="bullets"></div>
+            <div class="bullets"></div>
+          </div>
+          <div class="text">
+            <div class="title ts-1">Design Interiors</div>
+          </div>
+          <div class="outer-circle"></div>
+          <div class="dots"></div>
+      </div>
     <div class="main-container">
       <div class="main-1">
         <div class="container main-wrap-1">
@@ -14,8 +25,8 @@
               </div>
               <div class="desc desc-1">
                 Step into a world of interior design where <b>relaxation</b> and
-                <b>comfort</b><br> take center stage. Our designs are crafted with one goal
-                in mind – to create<br> spaces that offer a soothing sanctuary from
+                <b>comfort</b> take center stage. Our designs are crafted with one goal
+                in mind – to create spaces that offer a soothing sanctuary from
                 the everyday hustle and bustle.
               </div>
             </div>
@@ -33,7 +44,7 @@
             <div class="text">
               <div class="title title-2">Creating <span>Comfort</span><br> That <span>Feels Like Home</span></div>
               <div class="desc desc-2">
-                Whether it's a cozy nook or an expansive living area,<br> we prioritize your <b>peace of mind</b>. Every detail, every element is<br> thoughtfully chosen to create an atmosphere that welcomes tranquility.<br> Come experience interiors that not only look beautiful but also embrace you<br> with a warm and <b>relaxing embrace.</b>
+                Whether it's a cozy nook or an expansive living area, we prioritize your <b>peace of mind</b>. Every detail, every element is thoughtfully chosen to create an atmosphere that welcomes tranquility.
               </div>
             </div>
           </div>
@@ -45,8 +56,7 @@
         <div class="container main-wrap-3">
             <div class="text content-3">
               <div class="title title-3">The <span>Family</span> Living Room<br> Where <span>Memories</span> Are Made</div>
-              <div class="desc desc-3">
-                Discover Our Family Living Room: <b>Comfort</b> and <b>Relaxation</b> at its Best.<br> It's the perfect place for your family to relax and spend quality<br> time together. With comfy furnishings and a welcoming atmosphere,<br> our living room is where you'll <b>create special memories.</b>
+              <div class="desc desc-3">It's the perfect place for your family to relax and spend quality time together. With comfy furnishings and a welcoming atmosphere, our living room is where you'll <b>create special memories.</b>
               </div>
             </div>
         </div>
@@ -174,7 +184,66 @@ export default {
 
 .sec-3 {
   background-color: #fff;
-  transition: .5s;
+  width: 100%;
+
+  .side-text {
+        position: absolute;
+        left: -12em;
+        display: flex;
+        align-items: center;
+        transform: rotate(-90deg);
+        z-index: 1;
+
+        .dots {
+          width: func.toEm(10px);  
+          height: func.toEm(10px);
+          border-radius: 50%;
+          background-color: #000;
+          margin: 0 2em;
+        }
+
+        .outer-circle {
+          width: func.toEm(25px);  
+          height: func.toEm(25px);
+          border-radius: 50%;
+          border: 1px solid #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 74%;
+            height: 74%;
+            position: absolute;
+            background-color: #000;
+            border-radius: 50%;
+          }
+        }
+
+        .bullet-group {
+          display: flex;
+          align-items: center;
+          gap: 2em;
+
+          .bullets {
+            width: func.toEm(8px);  
+            height: func.toEm(8px);
+            border-radius: 50%;
+            background-color: #000;
+          }
+        }
+        
+        .title {
+          @include g.fontStyle(AktivGroteskEx-Regular, 18px, 22px);
+          color: #000;
+          text-align: center;
+          width: max-content;
+          padding: 0 2em;
+        }
+    }
 
   .main-container {
     display: flex;
@@ -192,7 +261,7 @@ export default {
       justify-content: center;
 
       .main-wrap-1 {
-        gap: func.toEm(60px);
+        gap: func.toEm(100px);
         display: flex;
         align-items: center;
 
@@ -226,14 +295,15 @@ export default {
               opacity: 0;
             }
             .title {
-              @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
 
               span {
                 color: #ffb000;
               }
             }
             .desc {
-              @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
+              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
+              width: 100%;
               margin-top: func.toEm(50px, 30px);
             }
           }
@@ -304,14 +374,15 @@ export default {
             }
 
             .title {
-              @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
 
               span {
                 color: #ffb000;
               }
             }
             .desc {
-              @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
+              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
+              width: 95%;
               margin-top: func.toEm(50px, 30px);
             }
           }
@@ -345,7 +416,7 @@ export default {
             color: #03001c;
 
             .title {
-              @include g.fontStyle(HelveticaNowDisplay-Bold, 46px, 60px);
+              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
               
               transform: translateX(30px);
               opacity: 0;
@@ -356,8 +427,9 @@ export default {
               }
             }
             .desc {
-              @include g.fontStyle(HelveticaNowDisplay-Regular, 28px, 40px);
+              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
               margin-top: func.toEm(60px, 30px);
+              width: 40%;
 
               transform: translateX(30px);
               opacity: 0;
