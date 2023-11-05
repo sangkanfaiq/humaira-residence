@@ -319,7 +319,7 @@ export default {
 
             .text-1 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -364,7 +364,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -409,7 +409,7 @@ export default {
 
             .text-2 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -452,7 +452,7 @@ export default {
 
             .text-4 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -496,7 +496,7 @@ export default {
 
             .text-5 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     text-align: center;
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -542,7 +542,7 @@ export default {
 
             .text-6 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -587,7 +587,7 @@ export default {
 
             .text-7 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -632,7 +632,7 @@ export default {
 
             .text-8 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #ECE9E6;
                     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
@@ -676,7 +676,7 @@ export default {
 
             .text-9 {
                 .title {
-                    @include g.fontStyle(AktivGroteskEx-Bold, 32px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 

@@ -34,13 +34,13 @@
             <div class="img-bg-main-15"></div>
             <div class="animate-1">
               <div class="text text-1">
-                <div class="title tc-1">Unit Type 72/105</div>
-                <div class="title tc-2">Unit Type 48/84</div>
-                <div class="title tc-3">Unit Type 45/78</div>
-                <div class="title tc-4">Unit Type 36/72</div>
-                <div class="title tc-5">Unit Type 36/66</div>
-                <div class="title tc-6">Unit Type 36/60</div>
-                <div class="title tc-7">Unit Type 36/60<br> Special</div>
+                <div class="title tc-1">UNIT TYPE 72/105</div>
+                <div class="title tc-2">UNIT TYPE 48/84</div>
+                <div class="title tc-3">UNIT TYPE 45/78</div>
+                <div class="title tc-4">UNIT TYPE 36/72</div>
+                <div class="title tc-5">UNIT TYPE 36/66</div>
+                <div class="title tc-6">UNIT TYPE 36/60</div>
+                <div class="title tc-7">UNIT TYPE 36/60<br> Special</div>
               </div>
               
             </div>
@@ -476,6 +476,8 @@
     methods: {
       startAnimationStep1() {
         let stop_keyboard_mouse = false;
+        let mouseX = 0;
+        let mouseY = 0;
   
               function disableScroll(duration = 0) {
                   console.log('disableScroll: ', duration);
@@ -1303,7 +1305,7 @@
               -webkit-text-fill-color: transparent;
               text-align: center;
               
-              @include g.fontStyle(AktivGroteskEx-Bold, 80px, 96px);
+              @include g.fontStyle(DINPro-Bold, 80px, 96px);
             }
           }
 
@@ -1333,7 +1335,7 @@
 
             .desc {
               position: absolute;
-              @include g.fontStyle(AktivGroteskEx-Regular, 22px, 38px);
+              @include g.fontStyle(DINPro-Regular, 26px, 38px);
               color: #000;
 
               .content {

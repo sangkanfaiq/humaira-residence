@@ -145,7 +145,7 @@ export default {
 
     .text {
         .desc {
-            @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
+            @include g.fontStyle(DINPro-Regular, 22px, 28px);
             color: gray;
         }
     }
@@ -183,7 +183,7 @@ export default {
   }
 
   .title-footer {
-    @include g.fontStyle(AktivGroteskEx-Bold, 16px, 24px);
+    @include g.fontStyle(DINPro-Bold, 16px, 24px);
     color: #fff;
   }
 
@@ -202,7 +202,7 @@ export default {
       }
 
       .info {
-        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
+        @include g.fontStyle(DINPro-Regular, 24px, 28px);
       }
     }
 
@@ -213,7 +213,7 @@ export default {
       gap: 1em;
 
       .label {
-        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
+        @include g.fontStyle(DINPro-Regular, 24px, 28px);
         color: #fff;
       }
 
@@ -240,7 +240,7 @@ export default {
 
     .units {
       .text-units {
-        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
+        @include g.fontStyle(DINPro-Regular, 24px, 28px);
         color: #fff;
       }
     }
@@ -289,7 +289,7 @@ export default {
       }
 
       .text-social {
-        @include g.fontStyle(AktivGroteskEx-Regular, 24px, 28px);
+        @include g.fontStyle(DINPro-Regular, 24px, 28px);
         color: #fff;
         margin-left: 0.5em;
       }

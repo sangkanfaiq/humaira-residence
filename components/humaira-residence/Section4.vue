@@ -14,8 +14,8 @@
             </div>
 
             <div class="text main-text">
-                <div class="title title-1">Minimalist House</div>
-                <div class="title title-2">Affordable Price</div>
+                <div class="title title-1">"Minimalist House</div>
+                <div class="title title-2">Affordable Price"</div>
             </div>
 
             <div class="bottom-content">
@@ -60,26 +60,48 @@ export default {
 
             this.$scrollmagic.addScene(AnimationSec4);
 
-            this.$parent.animationPositionReset()
+            $(document).ready(function() {
+                const contentTop = $('.sec-4 .top-content');
+                const contentBottom = $('.sec-4 .bottom-content');
 
-            tl.fromTo(".sec-4 .top-content", 2, { x: '-5vw' }, { x: '-148vw' }, this.$parent.animationPosition(0.5));
-            tl.fromTo(".sec-4 .bottom-content", 2, { x: '-148vw' }, { x: '-5vw' }, this.$parent.animationPosition());
+                const offsetWidthTop = contentTop[0].offsetWidth;
+                const offsetWidthBottom = contentBottom[0].offsetWidth;
+
+                const innerWidth = window.innerWidth
+
+                const totalTopWidth = offsetWidthTop - innerWidth
+                const totalBottomWidth = offsetWidthBottom - innerWidth
+
+                tl.fromTo(".sec-4 .top-content", 2, { x: '-5vw' }, { x: (totalTopWidth * -1) + -40 }, 0);
+                tl.fromTo(".sec-4 .bottom-content", 2, { x: (totalBottomWidth * -1) + -40 }, { x: '-5vw' }, 0);
+            });
         },
         AnimationMB() {
             const tl = new TimelineMax();
 
-            const AnimationSec4_Mobile = this.$scrollmagic.scene({
+            const AnimationSec4 = this.$scrollmagic.scene({
                 triggerElement: ".sec-4",
                 triggerHook: 0.0,
                 duration: "200%",
             }).setTween(tl).setPin('.sec-4');
 
-            this.$scrollmagic.addScene(AnimationSec4_Mobile);
+            this.$scrollmagic.addScene(AnimationSec4);
 
-            this.$parent.animationPositionReset()
+            $(document).ready(function() {
+                const contentTop = $('.sec-4 .top-content');
+                const contentBottom = $('.sec-4 .bottom-content');
 
-            tl.fromTo(".sec-4 .top-content", 2, { x: '-5vw' }, { x: '-669vw' }, this.$parent.animationPosition(0.5));
-            tl.fromTo(".sec-4 .bottom-content", 2, { x: '-669vw' }, { x: '-5vw' }, this.$parent.animationPosition());
+                const offsetWidthTop = contentTop[0].offsetWidth;
+                const offsetWidthBottom = contentBottom[0].offsetWidth;
+
+                const innerWidth = window.innerWidth
+
+                const totalTopWidth = offsetWidthTop - innerWidth
+                const totalBottomWidth = offsetWidthBottom - innerWidth
+
+                tl.fromTo(".sec-4 .top-content", 2, { x: '-5vw' }, { x: (totalTopWidth * -1) + -40 }, 0);
+                tl.fromTo(".sec-4 .bottom-content", 2, { x: (totalBottomWidth * -1) + -40 }, { x: '-5vw' }, 0);
+            });
         },
     }
 }
@@ -112,7 +134,8 @@ export default {
 
 
         .title {
-            @include g.fontStyle(AktivGroteskEx-Bold, 70px, 120px);
+            @include g.fontStyle(DINPro-Bold, 80px, 120px);
+            text-transform: uppercase;
 
             background: #CAC531; 
             background: -webkit-linear-gradient(to right, #F3F9A7, #CAC531);

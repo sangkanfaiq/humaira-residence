@@ -17,7 +17,7 @@
                         <div class="img-bg-1"></div>
                         <div class="content-1">
                             <div class="text">
-                                <div class="title">Memoirs in Motion</div>
+                                <div class="title">MEMOIRS IN MOTION</div>
                                 <div class="desc">Embracing Life's Moments as a Family</div>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="img-bg-1-b"></div>
                         <div class="content-1-b">
                             <div class="text">
-                                <div class="title">Legacy Builders</div>
+                                <div class="title">LEGACY BUILDERS</div>
                                 <div class="desc">Creating Treasured Moments<br> Among Loved Ones</div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="img-bg-2"></div>
                         <div class="content-2">
                             <div class="text">
-                                <div class="title">Happy Neighborhood</div>
+                                <div class="title">HAPPY NEIGHBORHOOD</div>
                                 <div class="desc">Where Smiles are Everywhere</div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="img-bg-2-b"></div>
                         <div class="content-2-b">
                             <div class="text">
-                                <div class="title">Community Corner Chronicles</div>
+                                <div class="title">COMMUNITY CORNER CHRONICLES</div>
                                 <div class="desc">Spreading Happiness Near</div>
                             </div>
                         </div>
@@ -82,6 +82,8 @@ export default {
     methods: {
         Step1Animation() {
             let stop_keyboard_mouse = false;
+            let mouseX = 0;
+            let mouseY = 0;
 
             function disableScroll(duration = 0) {
                 console.log('disableScroll: ', duration);
@@ -410,7 +412,7 @@ export default {
         }
 
         .subtext-1 {
-            @include g.fontStyle(AktivGroteskEx-Medium, 46px, 64px);
+            @include g.fontStyle(DINPro-Medium, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
@@ -433,7 +435,7 @@ export default {
             }
         }
         .subtext-2 {
-            @include g.fontStyle(AktivGroteskEx-Medium, 46px, 64px);
+            @include g.fontStyle(DINPro-Medium, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
@@ -538,10 +540,10 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
                             }
                             .desc {
-                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                @include g.fontStyle(DINPro-Regular, 32px, 40px);
                                 margin-top: func.toEm(30px, 32px);
                             }
                         }
@@ -591,10 +593,10 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
                             }
                             .desc {
-                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                @include g.fontStyle(DINPro-Regular, 32px, 40px);
                                 margin-top: func.toEm(30px, 32px);
                             }
                         }
@@ -662,10 +664,10 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
                             }
                             .desc {
-                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                @include g.fontStyle(DINPro-Regular, 32px, 40px);
                                 margin-top: func.toEm(30px, 32px);
                             }
                         }
@@ -711,10 +713,10 @@ export default {
                             -webkit-text-fill-color: transparent;
 
                             .title {
-                                @include g.fontStyle(AktivGroteskEx-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
                             }
                             .desc {
-                                @include g.fontStyle(AktivGroteskEx-Regular, 32px, 40px);
+                                @include g.fontStyle(DINPro-Regular, 32px, 40px);
                                 margin-top: func.toEm(30px, 32px);
                             }
                         }

@@ -111,7 +111,9 @@ export default {
     text-align: center;
 
     .title {
-      @include g.fontStyle(AktivGroteskEx-Bold, 72px, 90px);
+      @include g.fontStyle(DINPro-Bold, 80px, 90px);
+      text-transform: uppercase;
+
       background: #0f0c29;
       background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
       background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
@@ -119,13 +121,13 @@ export default {
       -webkit-text-fill-color: transparent;
     }
     .desc {
-      @include g.fontStyle(AktivGroteskEx-Regular, 28px, 32px);
+      @include g.fontStyle(DINPro-Regular, 28px, 32px);
       color: #878a8f;
       letter-spacing: 0.3em;
       margin-top: func.toEm(60px, 28px);
     }
     .desc-2 {
-      @include g.fontStyle(AktivGroteskEx-Regular, 32px, 46px);
+      @include g.fontStyle(DINPro-Regular, 32px, 46px);
       color: #03001c;
       margin-top: func.toEm(20px, 32px);
     }

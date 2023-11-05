@@ -87,60 +87,18 @@ export default {
         .scene({
           triggerElement: ".sec-3",
           triggerHook: 0.0,
-          duration: "250%",
+          duration: "200%",
         })
         .setTween(tl).setPin('.sec-3');
 
       this.$scrollmagic.addScene(scene);
 
-      tl.to(".sec-3", 1, {}, 0);
-      tl.to(".sec-3 .main-1", 1, { x: '-100vw' }, 0.5);
-      tl.fromTo(".sec-3 .main-2", 1, { x: '100vw'}, { x: 0}, 0.5);
+      tl.to(".sec-3 .main-1", 1, { x: '-100vw' }, 0);
+      tl.fromTo(".sec-3 .main-2", 1, { x: '100vw'}, { x: 0}, 0);
 
-      tl.to(".sec-3", .3, { onStart: Step2Start, onReverseComplete: Step2Reverse }, 0.8);
+      tl.to(".sec-3 .main-2", 1, { x: '-100vw' }, 1);
+      tl.fromTo(".sec-3 .main-3", 1, { x: '100vw'}, { x: 0}, 1);
 
-      tl.to(".sec-3", .1, { onStart: Step2TextStart, onReverseComplete: Step2TextReverse }, 1);
-
-      tl.to(".sec-3 .main-2", 1, { x: '-100vw' }, 1.5);
-      tl.fromTo(".sec-3 .main-3", 1, { x: '100vw'}, { x: 0}, 1.5);
-      tl.to(".sec-3", .1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, 1.8);
-
-
-      function Step2Start() {
-        $('.sec-3 .main-2 .img-bg-1').css('transform', 'unset').css('opacity', 1)
-        $('.sec-3 .main-2 .img-bg-2').css('transform', 'unset').css('opacity', 1)
-      }
-
-      function Step2Reverse() {
-        $('.sec-3 .main-2 .img-bg-1').css('transform', 'translateY(50px)').css('opacity', 0)
-        $('.sec-3 .main-2 .img-bg-2').css('transform', 'translateY(-50px)').css('opacity', 0)
-      }
-
-      function Step2TextStart() {
-        $('.sec-3 .main-2 .title-2').css('transform', 'unset').css('opacity', 1)
-        setTimeout(()=> {
-          $('.sec-3 .main-2 .desc-2').css('transform', 'unset').css('opacity', 1)
-        }, 300)
-      }
-
-      function Step2TextReverse() {
-        $('.sec-3 .main-2 .title-2').css('transform', 'translateX(30px)').css('opacity', 0)
-        $('.sec-3 .main-2 .desc-2').css('transform', 'translateX(30px)').css('opacity', 0)
-      }
-
-      function Step3Start() {
-        $('.sec-3 .main-3 .title-3').css('transform', 'unset').css('opacity', 1)
-        setTimeout(()=> {
-          $('.sec-3 .main-3 .desc-3').css('transform', 'unset').css('opacity', 1)
-        }, 300)
-      }
-
-      function Step3Reverse() {
-          $('.sec-3 .main-3 .title-3').css('transform', 'translateX(30px)').css('opacity', 0)
-          $('.sec-3 .main-3 .desc-3').css('transform', 'translateX(30px)').css('opacity', 0)
-      }
-
-      
     },
     animationStep1() {
       const tl = new TimelineMax();
@@ -151,9 +109,7 @@ export default {
       function Step1Start() {
         $('.sec-3 .img-wrap-1').css('transform', 'unset').css('opacity', 1)
         $('.sec-3 .content-1 .title-1').css('transform', 'unset').css('opacity', 1)
-        setTimeout(()=> {
-          $('.sec-3 .content-1 .desc-1').css('transform', 'unset').css('opacity', 1)
-        }, 300)
+        $('.sec-3 .content-1 .desc-1').css('transform', 'unset').css('opacity', 1)
       }
 
       function Step1Reverse() {
@@ -165,8 +121,8 @@ export default {
       const scene = this.$scrollmagic
         .scene({
           triggerElement: ".sec-3 .main-container",
-          triggerHook: 0.4,
-          duration: "40%",
+          triggerHook: 0.7,
+          duration: "50%",
         })
         .setTween(tl)
 
@@ -337,7 +293,7 @@ export default {
           }
 
           .text {
-            color: #03001c;
+            color: #0f0c29;
 
             .title-1, .desc-1 {
               transition: transform .5s, opacity .5s;
@@ -351,7 +307,7 @@ export default {
             }
 
             .title {
-              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
+              @include g.fontStyle(DINPro-Medium, 46px, 60px);
 
               span {
                 color: #CAC531;
@@ -359,7 +315,7 @@ export default {
             }
 
             .desc {
-              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
+              @include g.fontStyle(DINPro-Regular, 28px, 40px);
               width: 100%;
               margin-top: func.toEm(50px, 30px);
             }
@@ -404,13 +360,7 @@ export default {
             bottom: 0;
             left: 0;
 
-            transition: opacity 0.5s, transform 0.5s;
-            transform: translateY(50px);
-            opacity: 0;
-
             @include mixin.media(mb) {
-              transform: unset;
-              opacity: 1;
               height: 60%;
             }
           }
@@ -427,13 +377,7 @@ export default {
             border: 3px solid #fff;
             z-index: 1;
 
-            transition: opacity 0.5s, transform 0.5s;
-            transform: translateY(-50px);
-            opacity: 0;
-
             @include mixin.media(mb) {
-              transform: unset;
-              opacity: 1;
               height: 60%;
               width: 60%;
             }
@@ -451,26 +395,15 @@ export default {
           .text {
             color: #03001c;
 
-            .title-2, .desc-2 {
-              transform: translateX(30px);
-              opacity: 0;
-              transition: opacity 0.5s, transform 0.5s;
-
-              @include mixin.media(mb) {
-                transform: unset;
-                opacity: 1;
-              }
-            }
-
             .title {
-              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
+              @include g.fontStyle(DINPro-Medium, 46px, 60px);
 
               span {
                 color: #CAC531;
               }
             }
             .desc {
-              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
+              @include g.fontStyle(DINPro-Regular, 28px, 40px);
               width: 95%;
               margin-top: func.toEm(50px, 30px);
             }
@@ -522,33 +455,18 @@ export default {
             color: #03001c;
 
             .title {
-              @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
-              
-              transform: translateX(30px);
-              opacity: 0;
-              transition: transform .5s, opacity .5s;
-
-              @include mixin.media(mb) {
-                transform: unset;
-                opacity: 1;
-              }
+              @include g.fontStyle(DINPro-Medium, 46px, 60px);
 
               span {
                 color: #CAC531;
               }
             }
             .desc {
-              @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
+              @include g.fontStyle(DINPro-Regular, 28px, 40px);
               margin-top: func.toEm(60px, 30px);
               width: 40%;
 
-              transform: translateX(30px);
-              opacity: 0;
-              transition: transform .5s, opacity .5s;
-
               @include mixin.media(mb) {
-                transform: unset;
-                opacity: 1;
                 width: 100%;
               }
             }

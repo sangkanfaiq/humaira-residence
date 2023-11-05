@@ -186,16 +186,24 @@ export default {
 @include g.fontFamily("HelveticaNowDisplay-Black");
 @include g.fontFamily("HelveticaNowDisplay-ExtraBold");
 @include g.fontFamily("HelveticaNowDisplay-ExtraBlack");
+
 @include g.fontFamily("InfinixDisplay");
 @include g.fontFamily("InfinixDisplay-AR");
 @include g.fontFamily("InfinixDisplay-TH");
+
 @include g.fontFamily("AktivGroteskEx-Bold");
 @include g.fontFamily("AktivGroteskEx-Medium");
 @include g.fontFamily("AktivGroteskEx-Regular");
+
 @include g.fontFamily("GreatVibes-Regular");
+
 @include g.fontFamily("RedRose-Medium");
 @include g.fontFamily("RedRose-Light");
+
 @include g.fontFamily("DINPro-Light");
+@include g.fontFamily("DINPro-Regular");
+@include g.fontFamily("DINPro-Medium");
+@include g.fontFamily("DINPro-Bold");
 
 // Basic Css
 :root {

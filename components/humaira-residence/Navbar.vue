@@ -96,7 +96,7 @@ export default {
 
     .content {
       .title {
-        @include g.fontStyle(AktivGroteskEx-Medium, 28px, 45px);
+        @include g.fontStyle(DINPro-Medium, 28px, 45px);
         background: #0f0c29;
         background: -webkit-linear-gradient(
           to right,
