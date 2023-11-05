@@ -145,9 +145,9 @@ export default {
 
             this.$parent.animationPositionReset();
             tl.to(".sec-particles", 1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
-            tl.to(".sec-particles", 1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.3));
-            tl.to(".sec-particles", 1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.3));
-            tl.to(".sec-particles", 1, { onStart: Step4Start, onReverseComplete: Step4Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", .1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.2));
+            tl.to(".sec-particles", .1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.2));
+            tl.to(".sec-particles", .1, { onStart: Step4Start, onReverseComplete: Step4Reverse }, this.$parent.animationPosition(0.2));
 
             function Step1Start() {
                 $('.sec-particles .div1').css('transform', 'unset').css('opacity', 1)

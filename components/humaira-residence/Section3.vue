@@ -1,16 +1,16 @@
 <template>
   <section class="section sec-3">
     <div class="side-text">
-          <div class="bullet-group">
-            <div class="bullets"></div>
-            <div class="bullets"></div>
-          </div>
-          <div class="text">
-            <div class="title ts-1">Design Interiors</div>
-          </div>
-          <div class="outer-circle"></div>
-          <div class="dots"></div>
+      <div class="bullet-group">
+        <div class="bullets"></div>
+        <div class="bullets"></div>
       </div>
+      <div class="text">
+          <div class="title ts-1">Design Interiors</div>
+      </div>
+      <div class="outer-circle"></div>
+      <div class="dots"></div>
+    </div>
     <div class="main-container">
       <div class="main-1">
         <div class="container main-wrap-1">
@@ -75,6 +75,8 @@ export default {
     if(this.$parent.isDevice() === "pc") {
       this.animationStep1()
       this.startAnimation();
+    } else {
+      this.animationMb()
     }
   },
   methods: {
@@ -169,6 +171,25 @@ export default {
         .setTween(tl)
 
       this.$scrollmagic.addScene(scene);
+    },
+    animationMb() {
+      const tl = new TimelineMax();
+
+      const scene = this.$scrollmagic
+        .scene({
+          triggerElement: ".sec-3",
+          triggerHook: 0.0,
+          duration: "100%",
+        }).setTween(tl).setPin('.sec-3');
+
+      this.$scrollmagic.addScene(scene);
+
+      this.$parent.animationPositionReset()
+      tl.to(".sec-3 .main-1", 1, { x: '-100vw' }, this.$parent.animationPosition());
+      tl.fromTo(".sec-3 .main-2", 1, { x: '100vw'}, { x: 0}, this.$parent.animationPosition());
+
+      tl.to(".sec-3 .main-2", 1, { x: '-100vw' }, this.$parent.animationPosition(1));
+      tl.fromTo(".sec-3 .main-3", 1, { x: '100vw'}, { x: 0}, this.$parent.animationPosition());
     }
   },
 };
@@ -193,6 +214,10 @@ export default {
         align-items: center;
         transform: rotate(-90deg);
         z-index: 1;
+
+        @include mixin.media(mb) {
+          left: -13.5em;
+        }
 
         .dots {
           width: func.toEm(10px);  
@@ -252,6 +277,10 @@ export default {
     position: relative;
     transition: .5s;
 
+    @include mixin.media(mb) {
+      display: unset;
+    }
+
 
     .main-1 {
       display: flex;
@@ -265,13 +294,29 @@ export default {
         display: flex;
         align-items: center;
 
+        @include mixin.media(mb) {
+          flex-direction: column;
+          justify-content: space-evenly;
+        }
+
         .img-wrap-1 {
           width: 50%;
           height: 85%;
-          transition: transform .5s, opacity .5s;
 
+          transition: transform .5s, opacity .5s;
           transform: translateX(-30px);
           opacity: 0;
+
+          @include mixin.media(mb) {
+            transform: unset;
+            opacity: 1;
+            width: 100%;
+            height: 60%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
 
           .img-bg-1 {
             background-image: asset.furl(pc, sec3, interior-1);
@@ -286,21 +331,33 @@ export default {
         .content-1 {
           width: 50%;
           
+          @include mixin.media(mb) {
+            width: 100%;
+            height: 27%;
+          }
 
           .text {
             color: #03001c;
+
             .title-1, .desc-1 {
               transition: transform .5s, opacity .5s;
               transform: translateX(30px);
               opacity: 0;
+
+              @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+              }
             }
+
             .title {
               @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
 
               span {
-                color: #ffb000;
+                color: #CAC531;
               }
             }
+
             .desc {
               @include g.fontStyle(AktivGroteskEx-Regular, 28px, 40px);
               width: 100%;
@@ -323,11 +380,19 @@ export default {
         display: flex;
         align-items: center;
 
+        @include mixin.media(mb) {
+          flex-direction: column-reverse;
+        }
 
         .img-wrap-2 {
           width: 50%;
           height: 90%;
           position: relative;
+
+          @include mixin.media(mb) {
+            width: 100%;
+            height: 65%;
+          }
 
           .img-bg-1 {
             background-image: asset.furl(pc, sec3, interior-2);
@@ -342,6 +407,12 @@ export default {
             transition: opacity 0.5s, transform 0.5s;
             transform: translateY(50px);
             opacity: 0;
+
+            @include mixin.media(mb) {
+              transform: unset;
+              opacity: 1;
+              height: 60%;
+            }
           }
 
           .img-bg-2 {
@@ -359,11 +430,24 @@ export default {
             transition: opacity 0.5s, transform 0.5s;
             transform: translateY(-50px);
             opacity: 0;
+
+            @include mixin.media(mb) {
+              transform: unset;
+              opacity: 1;
+              height: 60%;
+              width: 60%;
+            }
           }
         }
 
         .content-2 {
           width: 50%;
+
+          @include mixin.media(mb) {
+            width: 100%;
+            height: 25%;
+          }
+
           .text {
             color: #03001c;
 
@@ -371,13 +455,18 @@ export default {
               transform: translateX(30px);
               opacity: 0;
               transition: opacity 0.5s, transform 0.5s;
+
+              @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+              }
             }
 
             .title {
               @include g.fontStyle(AktivGroteskEx-Medium, 46px, 60px);
 
               span {
-                color: #ffb000;
+                color: #CAC531;
               }
             }
             .desc {
@@ -397,6 +486,10 @@ export default {
       width: 100vw;
       justify-content: center;
 
+      @include mixin.media(mb) {
+        position: unset;
+      }
+
       .img-bg-3 {
         background-image: asset.furl(pc, sec3, interior-4);
         width: 55%;
@@ -406,11 +499,24 @@ export default {
         position: absolute;
         bottom: 0;
         right: 0;
+
+        @include mixin.media(mb) {
+          width: 100%;
+          height: 60%;
+          bottom: unset;
+          top: 0;
+        }
       }
 
       .main-wrap-3 {
         display: flex;
         align-items: center;
+
+        @include mixin.media(mb) {
+          height: 40%;
+          position: absolute;
+          bottom: 0;
+        }
 
         .content-3 {
             color: #03001c;
@@ -422,8 +528,13 @@ export default {
               opacity: 0;
               transition: transform .5s, opacity .5s;
 
+              @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+              }
+
               span {
-                color: #ffb000;
+                color: #CAC531;
               }
             }
             .desc {
@@ -434,6 +545,12 @@ export default {
               transform: translateX(30px);
               opacity: 0;
               transition: transform .5s, opacity .5s;
+
+              @include mixin.media(mb) {
+                transform: unset;
+                opacity: 1;
+                width: 100%;
+              }
             }
           }
       }

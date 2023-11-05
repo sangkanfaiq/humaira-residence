@@ -7,6 +7,7 @@
       <SectionParticles />
       <Section2 />
       <Section3 />
+      <Section4 />
       <SectionUnits />
       <SectionMaps />
     </div>
@@ -19,11 +20,12 @@ import Navbar from '../components/humaira-residence/Navbar.vue';
 import Footer from '../components/humaira-residence/Footer.vue';
 import Whatsapp from '../components/humaira-residence/Whatsapp.vue';
 import SectionMaps from '../components/humaira-residence/SectionMaps.vue';
+import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
+import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
 import Section1 from '../components/humaira-residence/Section1.vue';
 import Section2 from '../components/humaira-residence/Section2.vue';
 import Section3 from '../components/humaira-residence/Section3.vue';
-import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
-import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
+import Section4 from '../components/humaira-residence/Section4.vue';
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     Section1,
     Section2,
     Section3,
+    Section4,
     SectionUnits,
     SectionParticles,
 },
@@ -192,6 +195,7 @@ export default {
 @include g.fontFamily("GreatVibes-Regular");
 @include g.fontFamily("RedRose-Medium");
 @include g.fontFamily("RedRose-Light");
+@include g.fontFamily("DINPro-Light");
 
 // Basic Css
 :root {

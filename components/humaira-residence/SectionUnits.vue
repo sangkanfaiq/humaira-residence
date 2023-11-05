@@ -1341,12 +1341,12 @@
                 margin-top: .6em;
 
                 .title-desc {
-                  width: 150px;
+                  width: func.toEm(120px);
                   color: gray;
                 }
 
                 span {
-                  width: 50px;
+                  width: func.toEm(30px);
                 }
               }
             }

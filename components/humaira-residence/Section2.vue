@@ -312,8 +312,8 @@ export default {
                 disableTouch(300)
                 $('.sec-2 .subtext-2').css('transform', 'translateY(-30px)').css('opacity', 0)
                 setTimeout(()=> {
-                    $('.sec-2 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
                     $('.sec-2 .img-wrap-1-b').css('transform', 'unset').css('opacity', 1)
+                    $('.sec-2 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
                 }, 200)
             }
 
@@ -355,7 +355,7 @@ export default {
 
 .sec-2 {
     position: relative;
-    width: 100%;    
+    width: 100%; 
 
     .img-left {
         background-image: asset.furl(pc, sec2, left);
@@ -429,7 +429,7 @@ export default {
             }
 
             span {
-                color: #cac531;
+                color: #CAC531;
             }
         }
         .subtext-2 {
@@ -457,7 +457,7 @@ export default {
             }
 
             span {
-                color: #cac531;
+                color: #CAC531;
             }
         }
 
