@@ -152,7 +152,7 @@ export default {
             }
         }
         .title-2 {
-            margin-right: -6em;
+            margin-right: -7em;
 
             @include mixin.media(mb) {
                 margin-right: unset;
