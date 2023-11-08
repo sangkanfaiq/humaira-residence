@@ -43,12 +43,34 @@ export default {
     },
     mounted() {
         if(this.$parent.isDevice() === "pc") {
+            this.Step1Animation();
             this.startAnimation();
         } else {
+            this.Step1Animation();
             this.AnimationMB();
         }
     },
     methods: {
+        Step1Animation() {
+            const tl = new TimelineMax();
+
+            const AnimationSec4 = this.$scrollmagic.scene({
+                triggerElement: ".sec-4",
+                triggerHook: 0.3,
+                duration: "200%",
+            }).setTween(tl)
+
+            this.$scrollmagic.addScene(AnimationSec4);
+
+            tl.to(".sec-4", .1, { onStart: Step1Start }, 0);
+
+            function Step1Start() {
+                $('.sec-4 .title-1').css('transform', 'unset').css('opacity', 1)
+                setTimeout(()=> {
+                    $('.sec-4 .title-2').css('transform', 'unset').css('opacity', 1)
+                }, 300)
+            }
+        },
         startAnimation() {
             const tl = new TimelineMax();
 
@@ -147,12 +169,20 @@ export default {
         .title-1 {
             margin-left: -6em;
 
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform .5s, opacity .5s;
+
             @include mixin.media(mb) {
                 margin-left: unset;
             }
         }
         .title-2 {
             margin-right: -7em;
+
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform .5s, opacity .5s;
 
             @include mixin.media(mb) {
                 margin-right: unset;

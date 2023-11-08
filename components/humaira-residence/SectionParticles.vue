@@ -91,42 +91,49 @@ export default {
             this.$scrollmagic.addScene(AnimationSec11);
 
             this.$parent.animationPositionReset();
-            tl.to(".sec-particles", 1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
-            tl.to(".sec-particles", 1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.3));
-            tl.to(".sec-particles", 1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.3));
+            tl.to(".sec-particles", .1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, this.$parent.animationPosition());
+            tl.to(".sec-particles", .1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(0.5));
+            tl.to(".sec-particles", .1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(0.5));
+            tl.to(".sec-particles", .1, { onStart: Step4Start, onReverseComplete: Step4Reverse }, this.$parent.animationPosition(0.5));
 
             function Step1Start() {
                 $('.sec-particles .div1').css('transform', 'unset').css('opacity', 1)
                 $('.sec-particles .div2').css('transform', 'unset').css('opacity', 1)
-                $('.sec-particles .div3').css('transform', 'unset').css('opacity', 1)
-                $('.sec-particles .div4').css('transform', 'unset').css('opacity', 1)
             }
 
             function Step1Reverse() {
                 $('.sec-particles .div1').css('transform', 'translateY(30px)').css('opacity', 0)
                 $('.sec-particles .div2').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-particles .div3').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-particles .div4').css('transform', 'translateY(30px)').css('opacity', 0)
             }
 
             function Step2Start() {
+                $('.sec-particles .div3').css('transform', 'unset').css('opacity', 1)
+                $('.sec-particles .div4').css('transform', 'unset').css('opacity', 1)
                 $('.sec-particles .div5').css('transform', 'unset').css('opacity', 1)
-                $('.sec-particles .div6').css('transform', 'unset').css('opacity', 1)
-                $('.sec-particles .div7').css('transform', 'unset').css('opacity', 1)
             }
 
             function Step2Reverse() {
+                $('.sec-particles .div3').css('transform', 'translateY(30px)').css('opacity', 0)
+                $('.sec-particles .div4').css('transform', 'translateY(30px)').css('opacity', 0)
                 $('.sec-particles .div5').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-particles .div6').css('transform', 'translateY(30px)').css('opacity', 0)
-                $('.sec-particles .div7').css('transform', 'translateY(30px)').css('opacity', 0)
             }
 
             function Step3Start() {
+                $('.sec-particles .div6').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step3Reverse() {
+                $('.sec-particles .div6').css('transform', 'translateY(30px)').css('opacity', 0)
+            }
+
+            function Step4Start() {
+                $('.sec-particles .div7').css('transform', 'unset').css('opacity', 1)
                 $('.sec-particles .div8').css('transform', 'unset').css('opacity', 1)
                 $('.sec-particles .div9').css('transform', 'unset').css('opacity', 1)
             }
 
-            function Step3Reverse() {
+            function Step4Reverse() {
+                $('.sec-particles .div7').css('transform', 'translateY(30px)').css('opacity', 0)
                 $('.sec-particles .div8').css('transform', 'translateY(30px)').css('opacity', 0)
                 $('.sec-particles .div9').css('transform', 'translateY(30px)').css('opacity', 0)
             }
@@ -203,7 +210,7 @@ export default {
 
 
 .sec-particles {
-    height: 120vh;
+    height: 180vh;
     width: 100%;
     background-image: asset.furl(pc, sec11, bg-dark);
     background-repeat: no-repeat;
@@ -257,10 +264,10 @@ export default {
 
     .parent {
         display: grid;
-        grid-template-columns: repeat(4, func.toEm(450px));
-        grid-template-rows: repeat(3, func.toEm(350px));
-        grid-column-gap: func.toEm(10px);
-        grid-row-gap: func.toEm(10px);
+        grid-template-columns: repeat(2, func.toEm(450px)) repeat(2, func.toEm(400px)) 1fr;
+        grid-template-rows: func.toEm(350px) func.toEm(225px) func.toEm(100px) repeat(3, func.toEm(350px));
+        grid-column-gap: func.toEm(20px);
+        grid-row-gap: func.toEm(20px);
 
         @include mixin.media(mb) {
             grid-template-columns: repeat(2, func.toEm(300px));
@@ -284,13 +291,13 @@ export default {
 
 
         .div1 { 
-            grid-area: 1 / 1 / 2 / 2;
+            grid-area: 1 / 1 / 4 / 3;
             background: #F7F8F8;
-            background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8); 
-            background: linear-gradient(to right, #ACBB78, #F7F8F8); 
+            background: -webkit-linear-gradient(to right, #FFF, #F7F8F8); 
+            background: linear-gradient(to right, #FFF, #F7F8F8); 
 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             gap: 3em;
@@ -309,8 +316,8 @@ export default {
            
             .img-center {
                 background-image: asset.furl(pc, sec11, center);
-                width: func.toEm(150px);
-                height: func.toEm(150px);
+                width: func.toEm(400px);
+                height: func.toEm(400px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -319,7 +326,7 @@ export default {
 
             .text-1 {
                 .title {
-                    @include g.fontStyle(DINPro-Bold, 40px, 46px);
+                    @include g.fontStyle(DINPro-Bold, 60px, 70px);
                     background: #0f0c29;
                     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
                     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
@@ -329,9 +336,9 @@ export default {
             }
         }
         .div2 { 
-            grid-area: 1 / 2 / 2 / 3; 
+            grid-area: 1 / 3 / 3 / 5; 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             gap: 3em;
@@ -354,8 +361,8 @@ export default {
            
             .img-address {
                 background-image: asset.furl(pc, sec11, address);
-                width: func.toEm(150px);
-                height: func.toEm(150px);
+                width: func.toEm(200px);
+                height: func.toEm(200px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -374,9 +381,9 @@ export default {
             }
         }
         .div3 { 
-            grid-area: 1 / 3 / 2 / 4;
+            grid-area: 3 / 3 / 5 / 5; 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             gap: 3em;
@@ -398,8 +405,8 @@ export default {
            
             .img-security {
                 background-image: asset.furl(pc, sec11, security);
-                width: func.toEm(150px);
-                height: func.toEm(150px);
+                width: func.toEm(200px);
+                height: func.toEm(200px);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -419,7 +426,7 @@ export default {
             }
         }
         .div4 { 
-            grid-area: 1 / 4 / 3 / 5; 
+            grid-area: 4 / 1 / 6 / 2;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -462,7 +469,7 @@ export default {
             }
         }
         .div5 { 
-            grid-area: 2 / 1 / 4 / 2; 
+            grid-area: 4 / 2 / 6 / 3;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -507,9 +514,9 @@ export default {
             }
         }
         .div6 { 
-            grid-area: 2 / 2 / 3 / 3;
+            grid-area: 5 / 3 / 6 / 5; 
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             gap: 3em;
@@ -552,9 +559,9 @@ export default {
             }
         }
         .div7 { 
-            grid-area: 2 / 3 / 3 / 4; 
+            grid-area: 6 / 1 / 7 / 3;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             gap: 3em;
@@ -597,13 +604,13 @@ export default {
             }
         }
         .div8 { 
-            grid-area: 3 / 2 / 4 / 4;
+            grid-area: 6 / 3 / 7 / 4; 
             position: relative;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-around;
-            flex-direction: row-reverse;
-            padding: 0 2em;
+            flex-direction: column; 
+            gap: 3em;
 
             background: #c31432; 
             background: -webkit-linear-gradient(to right, #240b36, #c31432); 
@@ -638,11 +645,13 @@ export default {
                     background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
+
+                    text-align: center;
                 }
             }
         }
         .div9 { 
-            grid-area: 3 / 4 / 4 / 5;
+            grid-area: 6 / 4 / 7 / 5; 
             display: flex;
             justify-content: center;
             align-items: center;

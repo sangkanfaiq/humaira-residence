@@ -471,13 +471,13 @@
     mounted() {
       if(this.$parent.isDevice() === "pc") {
         this.startAnimationStep1()
+      } else {
+        this.AnimationMobile()
       }
     },
     methods: {
       startAnimationStep1() {
         let stop_keyboard_mouse = false;
-        let mouseX = 0;
-        let mouseY = 0;
   
               function disableScroll(duration = 0) {
                   console.log('disableScroll: ', duration);
@@ -490,6 +490,9 @@
                   }
               }
               document.addEventListener("mousemove", function(event) {
+                let mouseX = 0;
+                let mouseY = 0;
+
                   if (stop_keyboard_mouse) {
                       event.stopPropagation();
                       event.preventDefault();
@@ -1016,6 +1019,549 @@
         
   
       },
+      AnimationMobile() {
+        let stop_keyboard_mouse = false;
+  
+              function disableScroll(duration = 0) {
+                  console.log('disableScroll: ', duration);
+                  stop_keyboard_mouse = true;
+                  if (duration !== 0) {
+                      setTimeout(() => {
+                          console.log('disableScroll: bypass');
+                          stop_keyboard_mouse = false;
+                      }, duration);
+                  }
+              }
+              document.addEventListener("mousemove", function(event) {
+                let mouseX = 0;
+                let mouseY = 0;
+
+                  if (stop_keyboard_mouse) {
+                      event.stopPropagation();
+                      event.preventDefault();
+                  } else {
+                      mouseX = event.clientX;
+                      mouseY = event.clientY;
+                  }
+              },{ passive: false });
+              document.addEventListener("keydown", function(event) {
+                  if (stop_keyboard_mouse) {
+                      event.stopPropagation();
+                  }
+                  event.preventDefault();
+              },{ passive: false });
+              document.addEventListener("mousewheel", function(event) {
+                  if (stop_keyboard_mouse) {
+                      event.stopPropagation();
+                      event.preventDefault();
+                  }
+              }, { passive: false });
+              
+              let isScrollingTouchDisabled = false;
+              let lastScrollTouchPosition = 0;
+  
+              function disableTouch(stopDuration) {
+                  disableScroll(stopDuration)
+                  stopSTouch(stopDuration);
+              }
+              function disableScrollingTouch() {
+                  isScrollingTouchDisabled = true;
+              }
+              function enableScrollingTouch() {
+                  isScrollingTouchDisabled = false;
+              }
+              function stopSTouch(duration) {
+                  disableScrollingTouch();
+                  setTimeout(enableScrollingTouch, duration);
+              }
+  
+              window.addEventListener('scroll', function() {
+                  if (isScrollingTouchDisabled) {
+                      window.scrollTo(0, lastScrollTouchPosition);
+                  } else {
+                      lastScrollTouchPosition = window.pageYOffset;
+                  }
+              },{ passive: false });
+              document.body.addEventListener('touchmove', function(event) {
+                  if (isScrollingTouchDisabled) {
+                      event.preventDefault();
+                      window.scrollTo(0, lastScrollTouchPosition);
+                  }
+              }, { passive: false });
+              document.body.addEventListener('touchend', function(event) {
+                  if (isScrollingTouchDisabled) {
+                      event.preventDefault();
+                  }
+              }, { passive: false });
+  
+        const tl = new TimelineMax();
+  
+        const AnimationSec5Step2 = this.$scrollmagic
+          .scene({
+            triggerElement: ".sec-unit",
+            triggerHook: 0.0,
+            duration: "200%",
+          })
+          .setTween(tl).setPin('.sec-unit')
+  
+        this.$scrollmagic.addScene(AnimationSec5Step2);
+  
+        this.$parent.animationPositionReset();
+        tl.to(".sec-unit", 1, {}, this.$parent.animationPosition());
+        tl.to(".sec-unit", .1, { onStart: Step2Start, onReverseComplete: Step2Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step3Start, onReverseComplete: Step3Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step4Start, onReverseComplete: Step4Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step5Start, onReverseComplete: Step5Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step6Start, onReverseComplete: Step6Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step7Start, onReverseComplete: Step7Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step8Start, onReverseComplete: Step8Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step9Start, onReverseComplete: Step9Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step10Start, onReverseComplete: Step10Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step11Start, onReverseComplete: Step11Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step12Start, onReverseComplete: Step12Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step13Start, onReverseComplete: Step13Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step14Start, onReverseComplete: Step14Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step15Start, onReverseComplete: Step15Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step16Start, onReverseComplete: Step16Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step17Start, onReverseComplete: Step17Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step18Start, onReverseComplete: Step18Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step19Start, onReverseComplete: Step19Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, { onStart: Step20Start, onReverseComplete: Step20Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step21Start, onReverseComplete: Step21Reverse }, this.$parent.animationPosition(2));
+        tl.to(".sec-unit", .1, { onStart: Step22Start, onReverseComplete: Step22Reverse }, this.$parent.animationPosition(2));
+
+        tl.to(".sec-unit", .1, {}, this.$parent.animationPosition(1));
+
+        function Step22Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-14').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-15').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step22Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-15').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-14').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step21Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-7').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-14').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-7').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step21Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-7').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-14').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-7').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step20Start() {
+          disableTouch(600)
+          $('.sec-unit .img-bg-main-13').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .d-6').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-14').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-7').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step20Reverse() {
+          disableTouch(600)
+          $('.sec-unit .tc-7').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-14').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-13').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .d-6').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step19Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-12').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-13').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step19Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-13').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-12').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step18Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-6').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-12').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-6').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step18Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-6').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-12').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-6').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+          
+        }
+
+        function Step17Start() {
+          disableTouch(600)
+          $('.sec-unit .img-bg-main-11').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .d-5').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-12').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-6').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step17Reverse() {
+          disableTouch(600)
+          $('.sec-unit .tc-6').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-12').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-11').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .d-5').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step16Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-10').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-11').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step16Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-11').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-10').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step15Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-5').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-10').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-5').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step15Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-5').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-10').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-5').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step14Start() {
+          disableTouch(600)
+          $('.sec-unit .img-bg-main-9').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .d-4').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-10').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-5').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }  
+
+        function Step14Reverse() {
+          disableTouch(600)
+          $('.sec-unit .tc-5').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-10').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-9').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .d-4').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step13Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-8').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-9').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step13Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-9').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-8').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step12Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-4').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-8').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-4').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }  
+
+        function Step12Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-4').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-8').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-4').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step11Start() {
+          disableTouch(600)
+          $('.sec-unit .img-bg-main-7').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .d-3').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-8').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-4').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step11Reverse() {
+          disableTouch(500)
+          $('.sec-unit .tc-4').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .ts-4').css('transform', 'translateY(30px) rotate(-90deg)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-8').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-7').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .d-3').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .ts-3').css('transform', 'translateY(0) rotate(-90deg)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step10Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-6').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-7').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }  
+
+        function Step10Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-7').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-6').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step9Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-3').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-6').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-3').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step9Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-3').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-6').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-3').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step8Start() {
+          disableTouch(600)
+          $('.sec-unit .img-bg-main-5').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .d-2').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-6').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-3').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step8Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-6').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .tc-3').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-5').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .d-2').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step7Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-4').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-5').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step7Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-5').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-4').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step6Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-2').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-4').css('transform', 'translateY(-100%)')
+            setTimeout(()=> {
+              $('.sec-unit .d-2').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step6Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-2').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .ts-2').css('transform', 'translateY(0) rotate(-90deg)').css('opacity', 1)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-4').css('transform', 'unset')
+            setTimeout(()=> {
+              $('.sec-unit .tc-2').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step5Start() {
+          disableTouch(600)
+          $('.sec-unit .d-1').css('transform', 'translateY(-30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-3').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-4').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-2').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step5Reverse() {
+          disableTouch(500)
+          $('.sec-unit .tc-2').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-4').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .d-1').css('transform', 'unset').css('opacity', 1)
+            $('.sec-unit .img-bg-main-3').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step4Start() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-2').css('transform', 'translateY(-30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-3').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+        
+        function Step4Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-3').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-2').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step3Start() {
+          disableTouch(500)
+          
+          $('.sec-unit .img-bg-main-1').css('transform', 'translateY(-110%)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-2').css('transform', 'unset').css('opacity', 1)
+          }, 200)
+        }
+
+        function Step3Reverse() {
+          disableTouch(500)
+          $('.sec-unit .img-bg-main-2').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-1').css('transform', 'translateY(-100%)').css('opacity', 1)
+          }, 200)
+        }
+  
+        function Step2Start() {
+          disableTouch(600)
+          $('.sec-unit .tc-1').css('transform', 'translateY(-30px)').css('opacity', 0)
+          
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-1').css('transform', 'translateY(-100%)').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .d-1').css('transform', 'unset').css('opacity', 1)
+            }, 300)
+          }, 200)
+        }
+
+        function Step2Reverse() {
+          disableTouch(600)
+          $('.sec-unit .d-1').css('transform', 'translateY(30px)').css('opacity', 0)
+          $('.sec-unit .img-bg-main-2').css('transform', 'translateY(30px)').css('opacity', 0)
+          setTimeout(()=> {
+            $('.sec-unit .img-bg-main-1').css('transform', 'unset').css('opacity', 1)
+            setTimeout(()=> {
+              $('.sec-unit .tc-1').css('transform', 'unset').css('opacity', 1)
+            }, 200)
+          }, 200)
+        }
+  
+        
+  
+      },
     },
   };
   </script>
@@ -1038,6 +1584,10 @@
         display: flex;
         align-items: center;
         transform: rotate(-90deg);
+
+        @include mixin.media(mb) {
+          left: -19.5em;
+        }
 
         .dots {
           width: func.toEm(10px);  
@@ -1128,6 +1678,10 @@
         height: 100%;
         display: flex;
 
+        @include mixin.media(mb) {
+          flex-direction: column;
+        }
+
         .content-1 {
           width: 50%;
           height: 100%;
@@ -1135,6 +1689,10 @@
           justify-content: center;
           align-items: center;
           position: relative;
+
+          @include mixin.media(mb) {
+            width: 100%;
+          }
 
           .img-bg-main-2 {
               background-image: asset.furl(pc, sec6, a2);
@@ -1154,7 +1712,6 @@
                 display: block;
                 position: absolute;
                 right: 0;
-                /* color: #3a3a3a; */
                 color: gray;
               
                 bottom: 50%;
@@ -1205,6 +1762,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             .img-bg-main-7 {
@@ -1219,6 +1780,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             .img-bg-main-9 {
@@ -1233,6 +1798,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             
@@ -1248,6 +1817,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             .img-bg-main-13 {
@@ -1262,6 +1835,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
             
             .img-bg-main-15 {
@@ -1275,7 +1852,11 @@
 
               opacity: 0;
               transition: transform .5s, opacity .5s;
-              transform: translateX(30px);
+              transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
 
@@ -1292,6 +1873,10 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             .title {
@@ -1317,6 +1902,10 @@
           height: 100%;
           position: relative;
 
+          @include mixin.media(mb) {
+            width: 100%;
+          }
+
           .text-2 {
             width: 100%;
             height: 100%;
@@ -1331,6 +1920,10 @@
               opacity: 0;
               transform: translateX(50px);
               transition: transform .5s, opacity .5s;
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
             }
 
             .desc {
@@ -1364,6 +1957,10 @@
 
             .radius {
               border-radius: 20px;
+
+              @include mixin.media(mb) {
+                border-radius: unset;
+              }
             }
 
             .img-bg-main-1 {
@@ -1375,6 +1972,10 @@
               background-position: center;
               position: absolute;
               transition: transform .5s, opacity .5s;
+
+              @include mixin.media(mb) {
+                height: 100%;
+              }
             }
 
             
@@ -1390,6 +1991,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
             
             .img-bg-main-6 {
@@ -1404,6 +2010,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
 
             .img-bg-main-8 {
@@ -1418,6 +2029,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
             
             .img-bg-main-10 {
@@ -1432,6 +2048,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
 
             .img-bg-main-12 {
@@ -1446,6 +2067,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
 
             .img-bg-main-14 {
@@ -1460,6 +2086,11 @@
               opacity: 0;
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
+
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+                height: 96%;
+              }
             }
             
           }

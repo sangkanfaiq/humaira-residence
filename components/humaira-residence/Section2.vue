@@ -357,7 +357,7 @@ export default {
 
 .sec-2 {
     position: relative;
-    width: 100%; 
+    width: 100%;
 
     .img-left {
         background-image: asset.furl(pc, sec2, left);
@@ -412,7 +412,7 @@ export default {
         }
 
         .subtext-1 {
-            @include g.fontStyle(DINPro-Medium, 46px, 64px);
+            @include g.fontStyle(DINPro-Regular, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
@@ -435,7 +435,7 @@ export default {
             }
         }
         .subtext-2 {
-            @include g.fontStyle(DINPro-Medium, 46px, 64px);
+            @include g.fontStyle(DINPro-Regular, 46px, 64px);
             color: #03001c;
             position: absolute;
             width: 100%;
