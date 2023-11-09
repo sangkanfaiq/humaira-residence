@@ -82,8 +82,6 @@ export default {
     methods: {
         Step1Animation() {
             let stop_keyboard_mouse = false;
-            let mouseX = 0;
-            let mouseY = 0;
 
             function disableScroll(duration = 0) {
                 console.log('disableScroll: ', duration);
@@ -96,6 +94,8 @@ export default {
                 }
             }
             document.addEventListener("mousemove", function(event) {
+                let mouseX = 0;
+                let mouseY = 0;
                 if (stop_keyboard_mouse) {
                     event.stopPropagation();
                     event.preventDefault();
@@ -170,7 +170,7 @@ export default {
             tl.fromTo('.sec-2 .img-right', 2, { x: 0 }, { x: '50vw' }, this.$parent.animationPosition())
             
             tl.to('.sec-2', .1, { onStart: Subtext1Start, onReverseComplete: Subtext1Reverse }, this.$parent.animationPosition(2))
-            tl.to('.sec-2', .1, { onStart: Subtext2Start, onReverseComplete: Subtext2Reverse }, this.$parent.animationPosition(2))
+            tl.to('.sec-2', .1, { onStart: Subtext2Start, onReverseComplete: Subtext2Reverse }, this.$parent.animationPosition(1))
 
             tl.to('.sec-2', .1, { onStart: Main1Start, onReverseComplete: Main1Reverse }, this.$parent.animationPosition(2))
             tl.to(".sec-2 .main-1", 1, { x: '-100vw' }, this.$parent.animationPosition(1));
@@ -185,19 +185,19 @@ export default {
             }
 
             function Subtext2Start() {
-                disableTouch(400)
+                disableTouch(200)
                 $('.sec-2 .subtext-1').css('transform', 'translateY(-30px)').css('opacity', 0)
                 setTimeout(()=> {
                     $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
-                }, 300)
+                }, 100)
             }
 
             function Subtext2Reverse() {
-                disableTouch(400)
+                disableTouch(200)
                 $('.sec-2 .subtext-2').css('transform', 'translateY(30px)').css('opacity', 0)
                 setTimeout(()=> {
                     $('.sec-2 .subtext-1').css('transform', 'unset').css('opacity', 1)
-                }, 300)
+                }, 100)
             }
 
 
@@ -208,7 +208,7 @@ export default {
                 setTimeout(()=> {
                     $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
                     $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'unset').css('opacity', 1)
-                }, 200)
+                }, 100)
                 
             }
 
@@ -218,7 +218,7 @@ export default {
                 $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'translateY(-30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 setTimeout(()=> {
                     $('.sec-2 .subtext-2').css('transform', 'unset').css('opacity', 1)
-                }, 200)
+                }, 100)
             }
         },
         AnimationMb() {
@@ -413,7 +413,7 @@ export default {
 
         .subtext-1 {
             @include g.fontStyle(DINPro-Regular, 46px, 64px);
-            color: #03001c;
+            color: #212529;
             position: absolute;
             width: 100%;
 
@@ -436,7 +436,7 @@ export default {
         }
         .subtext-2 {
             @include g.fontStyle(DINPro-Regular, 46px, 64px);
-            color: #03001c;
+            color: #212529;
             position: absolute;
             width: 100%;
 
@@ -533,14 +533,10 @@ export default {
 
                     .content-1 {
                         .text {
-                            background: #0f0c29;
-                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                            background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
+                           color: #212529;
 
                             .title {
-                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Regular, 46px, 56px);
                             }
                             .desc {
                                 @include g.fontStyle(DINPro-Regular, 32px, 40px);
@@ -586,14 +582,10 @@ export default {
                         width: 100%;
 
                         .text {
-                            background: #0f0c29;
-                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                            background: linear-gradient(to right, #24243e, #1f1b47, #0f0c29); 
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
+                            color: #212529;
 
                             .title {
-                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Regular, 46px, 56px);
                             }
                             .desc {
                                 @include g.fontStyle(DINPro-Regular, 32px, 40px);
@@ -657,14 +649,10 @@ export default {
 
                     .content-2 {
                         .text {
-                            background: #0f0c29;
-                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                            background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
+                            color: #212529;
 
                             .title {
-                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Regular, 46px, 56px);
                             }
                             .desc {
                                 @include g.fontStyle(DINPro-Regular, 32px, 40px);
@@ -706,14 +694,10 @@ export default {
                         width: 100%;
 
                         .text {
-                            background: #0f0c29;
-                            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-                            background: linear-gradient(to right, #24243e, #1f1b47, #0f0c29); 
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
+                            color: #212529;
 
                             .title {
-                                @include g.fontStyle(DINPro-Bold, 46px, 56px);
+                                @include g.fontStyle(DINPro-Regular, 46px, 56px);
                             }
                             .desc {
                                 @include g.fontStyle(DINPro-Regular, 32px, 40px);

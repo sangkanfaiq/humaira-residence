@@ -185,6 +185,10 @@ export default {
   .title-footer {
     @include g.fontStyle(DINPro-Bold, 16px, 24px);
     color: #fff;
+
+    @include mixin.media(mb) {
+      margin-top: 2em;
+    }
   }
 
   .contact-information {

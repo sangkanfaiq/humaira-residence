@@ -1707,6 +1707,10 @@
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
 
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
+
               &::after {
                 content: "1st Floor";
                 display: block;
@@ -1718,7 +1722,7 @@
                 top: 50%;
                 right: 10%;
 
-                @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
+                @include g.fontStyle(DINPro-Regular, 22px, 28px);
               }
             }
 
@@ -1735,6 +1739,10 @@
               transition: transform .5s, opacity .5s;
               transform: translateX(50px);
 
+              @include mixin.media(mb) {
+                transform: translateY(30px);
+              }
+
               &::after {
                 content: "2nd Floor";
                 display: block;
@@ -1746,7 +1754,7 @@
                 bottom: 50%;
                 top: 50%;
 
-                @include g.fontStyle(AktivGroteskEx-Regular, 22px, 28px);
+                @include g.fontStyle(DINPro-Regular, 22px, 28px);
               }
             }
 

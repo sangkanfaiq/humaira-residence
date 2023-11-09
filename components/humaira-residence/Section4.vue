@@ -57,18 +57,21 @@ export default {
             const AnimationSec4 = this.$scrollmagic.scene({
                 triggerElement: ".sec-4",
                 triggerHook: 0.3,
-                duration: "200%",
+                duration: "50%",
             }).setTween(tl)
 
             this.$scrollmagic.addScene(AnimationSec4);
 
-            tl.to(".sec-4", .1, { onStart: Step1Start }, 0);
+            tl.to(".sec-4", .1, { onStart: Step1Start, onReverseComplete: Step1Reverse }, 0);
 
             function Step1Start() {
                 $('.sec-4 .title-1').css('transform', 'unset').css('opacity', 1)
-                setTimeout(()=> {
-                    $('.sec-4 .title-2').css('transform', 'unset').css('opacity', 1)
-                }, 300)
+                $('.sec-4 .title-2').css('transform', 'unset').css('opacity', 1)
+            }
+
+            function Step1Reverse() {
+                $('.sec-4 .title-1').css('transform', 'translateY(50px)').css('opacity', 0)
+                $('.sec-4 .title-2').css('transform', 'translateY(50px)').css('opacity', 0)
             }
         },
         startAnimation() {

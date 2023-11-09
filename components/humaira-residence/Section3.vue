@@ -19,13 +19,10 @@
           </div>
           <div class="content-1">
             <div class="text">
-              <div class="title title-1">
-                Designing for <span>Comfort</span><br />Interiors That Embrace
-                <span>Relaxation.</span>
-              </div>
+              <div class="title title-1">Designing for Comfort</div>
               <div class="desc desc-1">
-                Step into a world of interior design where <b>relaxation</b> and
-                <b>comfort</b> take center stage. Our designs are crafted with one goal
+                Step into a world of interior design where relaxation and
+                comfort take center stage. Our designs are crafted with one goal
                 in mind – to create spaces that offer a soothing sanctuary from
                 the everyday hustle and bustle.
               </div>
@@ -42,9 +39,9 @@
           </div>
           <div class="content-2">
             <div class="text">
-              <div class="title title-2">Creating <span>Comfort</span><br> That <span>Feels Like Home</span></div>
+              <div class="title title-2">Feels Like Home</div>
               <div class="desc desc-2">
-                Whether it's a cozy nook or an expansive living area, we prioritize your <b>peace of mind</b>. Every detail, every element is thoughtfully chosen to create an atmosphere that welcomes tranquility.
+                Whether it's a cozy nook or an expansive living area, we prioritize your peace of mind. Every detail, every element is thoughtfully chosen to create an atmosphere that welcomes tranquility.
               </div>
             </div>
           </div>
@@ -55,8 +52,8 @@
         <div class="img-bg-3"></div>
         <div class="container main-wrap-3">
             <div class="text content-3">
-              <div class="title title-3">The <span>Family</span> Living Room<br> Where <span>Memories</span> Are Made</div>
-              <div class="desc desc-3">It's the perfect place for your family to relax and spend quality time together. With comfy furnishings and a welcoming atmosphere, our living room is where you'll <b>create special memories.</b>
+              <div class="title title-3">Where Memories Are Made</div>
+              <div class="desc desc-3">It's the perfect place for your family to relax and spend quality time together. With comfy furnishings and a welcoming atmosphere, our living room is where you'll create special memories.
               </div>
             </div>
         </div>
@@ -293,7 +290,7 @@ export default {
           }
 
           .text {
-            color: #0f0c29;
+            color: #212529;
 
             .title-1, .desc-1 {
               transition: transform .5s, opacity .5s;
@@ -307,11 +304,8 @@ export default {
             }
 
             .title {
-              @include g.fontStyle(DINPro-Medium, 46px, 60px);
+              @include g.fontStyle(DINPro-Regular, 60px, 70px);
 
-              span {
-                color: #CAC531;
-              }
             }
 
             .desc {
@@ -393,18 +387,15 @@ export default {
           }
 
           .text {
-            color: #03001c;
+            color: #212529;
 
             .title {
-              @include g.fontStyle(DINPro-Medium, 46px, 60px);
+              @include g.fontStyle(DINPro-Regular, 60px, 70px);
 
-              span {
-                color: #CAC531;
-              }
             }
             .desc {
               @include g.fontStyle(DINPro-Regular, 28px, 40px);
-              width: 95%;
+              width: 90%;
               margin-top: func.toEm(50px, 30px);
             }
           }
@@ -452,14 +443,11 @@ export default {
         }
 
         .content-3 {
-            color: #03001c;
+            color: #000;
 
             .title {
-              @include g.fontStyle(DINPro-Medium, 46px, 60px);
+              @include g.fontStyle(DINPro-Regular, 60px, 70px);
 
-              span {
-                color: #CAC531;
-              }
             }
             .desc {
               @include g.fontStyle(DINPro-Regular, 28px, 40px);
