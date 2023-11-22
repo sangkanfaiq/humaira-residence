@@ -5,6 +5,7 @@
     <div class="main-content">
       <Section1 />
       <SectionParticles />
+      <Intro />
       <Section2 />
       <Section3 />
       <Section4 />
@@ -20,6 +21,7 @@
 import Navbar from '../components/humaira-residence/Navbar.vue';
 import Footer from '../components/humaira-residence/Footer.vue';
 import Whatsapp from '../components/humaira-residence/Whatsapp.vue';
+import Intro from '../components/humaira-residence/Intro.vue';
 import SectionMaps from '../components/humaira-residence/SectionMaps.vue';
 import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
 import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
@@ -34,6 +36,7 @@ export default {
     Navbar,
     Footer,
     Whatsapp,
+    Intro,
     SectionMaps,
     Section1,
     Section2,

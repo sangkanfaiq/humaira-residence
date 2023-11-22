@@ -1,6 +1,6 @@
 <template>
   <section class="sec-wa">
-    <div class="img-wrapper" onclick="openWhatsApp()">
+    <div class="img-wrapper" @click="triggerWhatsApp">
       <div class="img"></div>
     </div>
   </section>
@@ -10,15 +10,23 @@
 export default {
   props: {},
   watch: {},
-  mounted() {},
+  mounted() {
+    this.shouldOpenWhatsApp = false;
+  },
   methods: {
     openWhatsApp() {
-      const phoneNumber = '+6287836297476';
-      const message = 'Pesan-Anda';
+      const phoneNumber = '+6282240176750';
+      const message = 'Hi, saya ingin mengetahui info tentang Humaira Residence';
 
       const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
 
-      window.open(whatsappURL);
+      if (this.shouldOpenWhatsApp) {
+        window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+      }
+    },
+    triggerWhatsApp() {
+      this.shouldOpenWhatsApp = true;
+      this.openWhatsApp();
     },
   },
 };

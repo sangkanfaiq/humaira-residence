@@ -383,7 +383,7 @@ export default {
 
           @include mixin.media(mb) {
             width: 100%;
-            height: 25%;
+            height: 17%;
           }
 
           .text {

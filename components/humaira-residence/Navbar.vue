@@ -2,10 +2,11 @@
   <section class="navbar">
     <div class="container-nav">
       <div class="logo-wrapper">
-        <!-- <div class="img-logo"></div> -->
-        <div class="text">
-          <div class="title">HUMAIRA RESIDENCE</div>
-        </div>
+        <NuxtLink to="/">
+          <div class="text">
+            <div class="title">HUMAIRA RESIDENCE</div>
+          </div>
+        </NuxtLink>
       </div>
       <div class="nav-content">
         <div class="content">
@@ -14,12 +15,14 @@
           </div>
         </div>
         <div class="content">
-          <div class="text">
-            <div class="title">Unit Type</div>
-          </div>
+          <NuxtLink target="_blank" to="/unit-type">
+            <div class="text">
+              <div class="title">Unit Type</div>
+            </div>
+          </NuxtLink>
         </div>
         <div class="content">
-          <div class="button">
+          <div class="button" @click="triggerWhatsApp">
             <div class="text">
               <div class="title">Contact us</div>
             </div>
@@ -34,8 +37,26 @@
 export default {
   props: {},
   watch: {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.shouldOpenWhatsApp = false;
+  },
+  methods: {
+    openWhatsApp() {
+      const phoneNumber = "+6282240176750";
+      const message =
+        "Hi, saya ingin mengetahui info tentang Humaira Residence";
+
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+      if (this.shouldOpenWhatsApp) {
+        window.open(whatsappURL, "_blank", "noopener,noreferrer");
+      }
+    },
+    triggerWhatsApp() {
+      this.shouldOpenWhatsApp = true;
+      this.openWhatsApp();
+    },
+  },
 };
 </script>
 
@@ -75,6 +96,11 @@ export default {
   }
 
   .logo-wrapper {
+
+    a {
+      text-decoration: none;
+    }
+
     .img-logo {
       background-image: asset.furl(pc, logo, logo);
       width: func.toEm(50px);
@@ -89,7 +115,7 @@ export default {
       }
     }
     .title {
-      @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+      @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
       background: #ece9e6;
       background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
       background: linear-gradient(to right, #ffffff, #ece9e6);
@@ -97,7 +123,7 @@ export default {
       -webkit-text-fill-color: transparent;
 
       @include mixin.media(mb) {
-        @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+        @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
       }
     }
   }
@@ -112,19 +138,24 @@ export default {
     }
 
     .content {
+      a {
+        text-decoration: none;
+      }
       .title {
-        @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+        @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
         background: #ece9e6;
         background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
         background: linear-gradient(to right, #ffffff, #ece9e6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        cursor: pointer;
       }
 
       .button {
         border: 2px solid #fff;
-        padding: .4em 1.5em;
-        border-radius: func.toEm(8px);
+        padding: 0.75em 1.5em;
+        border-radius: func.toEm(5px);
+        cursor: pointer;
       }
     }
   }
