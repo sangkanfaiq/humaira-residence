@@ -124,9 +124,7 @@ export default {
       position: absolute;
       width: 100%;
 
-      /* transform: translateY(30px); */
       transition: transform 0.5s, opacity 0.5s;
-      /* opacity: 0; */
 
       @include mixin.media(mb) {
         transform: unset;

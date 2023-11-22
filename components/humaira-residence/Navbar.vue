@@ -10,9 +10,11 @@
       </div>
       <div class="nav-content">
         <div class="content">
-          <div class="text">
-            <div class="title">Introduction</div>
-          </div>
+          <NuxtLink to="/">
+            <div class="text">
+              <div class="title">Introduction</div>
+            </div>
+          </NuxtLink>
         </div>
         <div class="content">
           <NuxtLink target="_blank" to="/unit-type">
