@@ -203,7 +203,6 @@ export default {
 
 
             function Main1Start() {
-                disableTouch(200)
                 $('.sec-2 .subtext-2').css('transform', 'translateY(-30px)').css('opacity', 0)
                 setTimeout(()=> {
                     $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'unset').css('opacity', 1)
@@ -213,7 +212,6 @@ export default {
             }
 
             function Main1Reverse() {
-                disableTouch(200)
                 $('.sec-2 .main-1 .img-wrap-1-a').css('transform', 'translateY(30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 $('.sec-2 .main-1 .img-wrap-1-b').css('transform', 'translateY(-30px)').css('opacity', 0).css('transition', 'transform .2s, opacity .2')
                 setTimeout(()=> {

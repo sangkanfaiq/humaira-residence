@@ -144,7 +144,7 @@ export default {
 
             const AnimationSecParticles = this.$scrollmagic.scene({
                 triggerElement: ".sec-particles",
-                triggerHook: 0.3,
+                triggerHook: 0.6,
                 duration: "100%",
             }).setTween(tl);
 
@@ -300,7 +300,7 @@ export default {
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            gap: 3em;
+            gap: 2em;
             overflow: hidden;
 
             &:hover {
@@ -322,6 +322,11 @@ export default {
                 background-position: center;
                 background-size: contain;
                 transition: transform .5s;
+
+                @include mixin.media(mb) {
+                    width: func.toEm(100px);
+                    height: func.toEm(100px);
+                }
             }
 
             .text-1 {
@@ -367,6 +372,11 @@ export default {
                 background-position: center;
                 background-size: contain;
                 transition: transform .5s;
+
+                @include mixin.media(mb) {
+                    width: func.toEm(100px);
+                    height: func.toEm(100px);
+                }
             }
 
             .text-2 {
@@ -412,6 +422,11 @@ export default {
                 background-size: contain;
 
                 transition: transform .5s;
+
+                @include mixin.media(mb) {
+                    width: func.toEm(100px);
+                    height: func.toEm(100px);
+                }
             }
 
             .text-2 {
@@ -499,6 +514,11 @@ export default {
                 background-size: contain;
 
                 transition: transform .5s;
+
+                @include mixin.media(mb) {
+                    width: func.toEm(120px);
+                    height: func.toEm(120px);
+                }
             }
 
             .text-5 {
@@ -635,6 +655,11 @@ export default {
                 background-size: contain;
 
                 transition: transform .5s;
+
+                @include mixin.media(mb) {
+                    width: func.toEm(80px);
+                    height: func.toEm(80px);
+                }
             }
 
             .text-8 {

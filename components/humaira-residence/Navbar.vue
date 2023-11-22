@@ -2,14 +2,12 @@
   <section class="navbar">
     <div class="container-nav">
       <div class="logo-wrapper">
-        <div class="img-logo"></div>
+        <!-- <div class="img-logo"></div> -->
+        <div class="text">
+          <div class="title">HUMAIRA RESIDENCE</div>
+        </div>
       </div>
       <div class="nav-content">
-        <div class="content">
-          <div class="text">
-            <div class="title">Home</div>
-          </div>
-        </div>
         <div class="content">
           <div class="text">
             <div class="title">Introduction</div>
@@ -18,6 +16,13 @@
         <div class="content">
           <div class="text">
             <div class="title">Unit Type</div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="button">
+            <div class="text">
+              <div class="title">Contact us</div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,13 +48,13 @@ export default {
   asset;
 
 .navbar {
-  background-color: #fff;
+  background-color: #000;
   top: 0;
   min-height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: absolute; */
+  position: fixed;
   z-index: 999;
   width: 100%;
 
@@ -83,6 +88,18 @@ export default {
         filter: brightness(120%);
       }
     }
+    .title {
+      @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+      background: #ece9e6;
+      background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
+      background: linear-gradient(to right, #ffffff, #ece9e6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include mixin.media(mb) {
+        @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+      }
+    }
   }
 
   .nav-content {
@@ -91,22 +108,23 @@ export default {
     gap: 3em;
 
     @include mixin.media(mb) {
-      display: none
+      display: none;
     }
 
     .content {
       .title {
-        @include g.fontStyle(DINPro-Medium, 28px, 45px);
-        background: #0f0c29;
-        background: -webkit-linear-gradient(
-          to right,
-          #24243e,
-          #302b63,
-          #0f0c29
-        );
-        background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        @include g.fontStyle(AktivGroteskEx-Bold, 28px, 45px);
+        background: #ece9e6;
+        background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
+        background: linear-gradient(to right, #ffffff, #ece9e6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .button {
+        border: 2px solid #fff;
+        padding: .4em 1.5em;
+        border-radius: func.toEm(8px);
       }
     }
   }

@@ -8,7 +8,8 @@
       <Section2 />
       <Section3 />
       <Section4 />
-      <SectionUnits />
+      <Section5 />
+      <!-- <SectionUnits /> -->
       <SectionMaps />
     </div>
     <Footer />
@@ -26,6 +27,7 @@ import Section1 from '../components/humaira-residence/Section1.vue';
 import Section2 from '../components/humaira-residence/Section2.vue';
 import Section3 from '../components/humaira-residence/Section3.vue';
 import Section4 from '../components/humaira-residence/Section4.vue';
+import Section5 from '../components/humaira-residence/Section5.vue';
 
 export default {
   components: {
@@ -37,6 +39,7 @@ export default {
     Section2,
     Section3,
     Section4,
+    Section5,
     SectionUnits,
     SectionParticles,
 },

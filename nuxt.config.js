@@ -25,7 +25,7 @@ export default {
     {
       src: '~plugins/vue-scrollmagic.js',
       ssr: false
-    }
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
