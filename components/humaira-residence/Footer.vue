@@ -20,7 +20,7 @@
               <div class="text content">
                 <div class="label text-width">Email</div>
                 <div class="label divider">:</div>
-                <div class="label">mail.humaira-residence.com</div>
+                <div class="label">mail@humaira-residence.com</div>
               </div>
               <div class="text content">
                 <div class="label text-width">Phone</div>
