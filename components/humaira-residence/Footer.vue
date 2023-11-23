@@ -20,12 +20,12 @@
               <div class="text content">
                 <div class="label text-width">Email</div>
                 <div class="label divider">:</div>
-                <div class="label">demo@gmail.com</div>
+                <div class="label">mail.humaira-residence.com</div>
               </div>
               <div class="text content">
                 <div class="label text-width">Phone</div>
                 <div class="label divider">:</div>
-                <div class="label">+62 812-3456-7890</div>
+                <div class="label">+62 822-4017-6750</div>
               </div>
             </div>
           </div>

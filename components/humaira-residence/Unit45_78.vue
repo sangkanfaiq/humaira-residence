@@ -122,6 +122,11 @@ export default {
   margin-top: 10vh;
   height: 220vh;
 
+  @include mixin.media(mb) {
+    margin-top: unset;
+    height: 150vh;
+  }
+
   .divider {
     width: 100%;
     height: 1px;

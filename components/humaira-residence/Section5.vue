@@ -13,7 +13,7 @@
             <div class="dots"></div>
         </div>
 
-        <div class="container main-container">
+        <div class="container main-container">  
             <div class="left">
                 <div class="text main-text">
                     <div class="title title-1 title-selected">72/105</div>
@@ -283,6 +283,8 @@ export default {
         @include mixin.media(mb) {
             display: flex;
             flex-direction: column-reverse;
+            margin-top: 20vh;
+            gap: 15em;
         }
     }
 
@@ -295,6 +297,7 @@ export default {
         @include mixin.media(mb) {
            width: 100%;
            height: 40%;
+           align-items: flex-start;
         }
 
         .main-text {
@@ -316,6 +319,10 @@ export default {
             .title {
                 @include g.fontStyle(DINPro-Regular, 80px, 130px);
                 color: #FFF;
+
+                @include mixin.media(mb) {
+                    @include g.fontStyle(DINPro-Regular, 35px, 80px);
+                }
             }
 
             .title-selected {

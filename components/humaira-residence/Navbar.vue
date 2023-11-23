@@ -31,16 +31,28 @@
           </div>
         </div>
       </div>
+      <div class="menu">
+        <div class="img img-1" @click="openMenu()"></div>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
+
+import $ from 'jquery'
+
 export default {
   props: {},
   watch: {},
+  data() {
+    return {
+      isMenuOpen: false
+    };
+  },
   mounted() {
     this.shouldOpenWhatsApp = false;
+    this.openMenu;
   },
   methods: {
     openWhatsApp() {
@@ -57,6 +69,12 @@ export default {
     triggerWhatsApp() {
       this.shouldOpenWhatsApp = true;
       this.openWhatsApp();
+    },
+    openMenu() {
+      $('.navbar .img').toggleClass("img-1 img-2");
+      $('.nav-content').toggleClass('nav-active', !this.isMenuOpen);
+
+      this.isMenuOpen = !this.isMenuOpen;
     },
   },
 };
@@ -85,6 +103,30 @@ export default {
     background-color: #000;
   }
 
+  .menu {
+    display: none;
+
+    @include mixin.media(mb) {
+      display: block;
+      margin-right: 2em;
+
+      .img {
+        width: func.toEm(20px);
+        height: func.toEm(20px);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      .img-1 {
+        background-image: asset.furl(pc, logo, menu);
+      }
+
+      .img-2 {
+        background-image: asset.furl(pc, logo, close);
+      }
+    }
+  }
+
   .container-nav {
     min-width: 90vw;
     max-width: 90vw;
@@ -93,11 +135,17 @@ export default {
     justify-content: space-between;
 
     @include mixin.media(mb) {
-      justify-content: center;
+      position: absolute;
+      min-width: 100vw;
+      max-width: 100vw;
     }
   }
 
   .logo-wrapper {
+
+    @include mixin.media(mb) {
+      margin-left: 2em;
+    }
 
     a {
       text-decoration: none;
@@ -143,6 +191,44 @@ export default {
       a {
         text-decoration: none;
       }
+      .title {
+        @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
+        background: #ece9e6;
+        background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
+        background: linear-gradient(to right, #ffffff, #ece9e6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
+      }
+
+      .button {
+        border: 2px solid #fff;
+        padding: 0.75em 1.5em;
+        border-radius: func.toEm(5px);
+        cursor: pointer;
+      }
+    }
+  }
+  
+  .nav-active {
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 5vh;
+    padding-top: 10em;
+    gap: 15em;
+    display: flex;
+    align-items: center;
+
+    .content {
+      a {
+        text-decoration: none;
+      }
+
       .title {
         @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
         background: #ece9e6;
