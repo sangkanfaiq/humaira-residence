@@ -39,15 +39,14 @@
 </template>
 
 <script>
-
-import $ from 'jquery'
+import $ from "jquery";
 
 export default {
   props: {},
   watch: {},
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
     };
   },
   mounted() {
@@ -71,8 +70,8 @@ export default {
       this.openWhatsApp();
     },
     openMenu() {
-      $('.navbar .img').toggleClass("img-1 img-2");
-      $('.nav-content').toggleClass('nav-active', !this.isMenuOpen);
+      $(".navbar .img").toggleClass("img-1 img-2");
+      $(".nav-content").toggleClass("nav-active", !this.isMenuOpen);
 
       this.isMenuOpen = !this.isMenuOpen;
     },
@@ -142,7 +141,6 @@ export default {
   }
 
   .logo-wrapper {
-
     @include mixin.media(mb) {
       margin-left: 2em;
     }
@@ -209,41 +207,43 @@ export default {
       }
     }
   }
-  
+
   .nav-active {
-    height: 100vh;
-    background-color: #000;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 5vh;
-    padding-top: 10em;
-    gap: 15em;
-    display: flex;
-    align-items: center;
+    @include mixin.media(mb) {
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 5vh;
+      padding-top: 10em;
+      gap: 10em;
+      display: flex;
+      align-items: center;
 
-    .content {
-      a {
-        text-decoration: none;
-      }
+      .content {
+        a {
+          text-decoration: none;
+        }
 
-      .title {
-        @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
-        background: #ece9e6;
-        background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
-        background: linear-gradient(to right, #ffffff, #ece9e6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        cursor: pointer;
-      }
+        .title {
+          @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
+          background: #ece9e6;
+          background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
+          background: linear-gradient(to right, #ffffff, #ece9e6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          cursor: pointer;
+        }
 
-      .button {
-        border: 2px solid #fff;
-        padding: 0.75em 1.5em;
-        border-radius: func.toEm(5px);
-        cursor: pointer;
+        .button {
+          border: 2px solid #fff;
+          padding: 0.75em 1.5em;
+          border-radius: func.toEm(5px);
+          cursor: pointer;
+        }
       }
     }
   }
