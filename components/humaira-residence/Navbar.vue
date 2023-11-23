@@ -111,8 +111,8 @@ export default {
       margin-right: 2em;
 
       .img {
-        width: func.toEm(20px);
-        height: func.toEm(20px);
+        width: func.toEm(15px);
+        height: func.toEm(15px);
         background-repeat: no-repeat;
         background-size: contain;
       }
