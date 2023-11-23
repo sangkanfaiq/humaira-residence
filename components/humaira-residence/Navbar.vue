@@ -107,7 +107,7 @@ export default {
 
     @include mixin.media(mb) {
       display: block;
-      margin-right: 2em;
+      margin-right: 1em;
 
       .img {
         width: func.toEm(15px);
@@ -142,7 +142,7 @@ export default {
 
   .logo-wrapper {
     @include mixin.media(mb) {
-      margin-left: 2em;
+      margin-left: 1em;
     }
 
     a {
