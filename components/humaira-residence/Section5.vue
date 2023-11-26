@@ -317,7 +317,7 @@ export default {
             margin-left: 5em;
 
             .title {
-                @include g.fontStyle(DINPro-Regular, 80px, 130px);
+                @include g.fontStyle(DINPro-Regular, 60px, 130px);
                 color: #FFF;
 
                 @include mixin.media(mb) {

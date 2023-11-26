@@ -2,33 +2,39 @@
   <section class="navbar">
     <div class="container-nav">
       <div class="logo-wrapper">
-        <NuxtLink to="/">
+        <a href="/">
           <div class="text">
             <div class="title">HUMAIRA RESIDENCE</div>
           </div>
-        </NuxtLink>
+        </a>
       </div>
       <div class="nav-content">
         <div class="content">
-          <NuxtLink to="/">
+          <a href="/">
             <div class="text">
-              <div class="title">Introduction</div>
+              <div class="title">Overview</div>
             </div>
-          </NuxtLink>
+          </a>
         </div>
         <div class="content">
-          <NuxtLink target="_blank" to="/unit-type">
+          <a href="/specifications">
             <div class="text">
-              <div class="title">Unit Type</div>
+              <div class="title">Specifications</div>
             </div>
-          </NuxtLink>
+          </a>
         </div>
+
         <div class="content">
-          <div class="button" @click="triggerWhatsApp">
+          <div class="button btn-mb" @click="triggerWhatsApp">
             <div class="text">
               <div class="title">Contact us</div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="button btn-pc" @click="triggerWhatsApp">
+        <div class="text">
+          <div class="title">Contact us</div>
         </div>
       </div>
       <div class="menu">
@@ -102,6 +108,34 @@ export default {
     background-color: #000;
   }
 
+  .btn-pc {
+    @include mixin.media(mb) {
+      display: none;
+    }
+  }
+
+  .btn-mb {
+    display: none;
+
+    @include mixin.media(mb) {
+      display: block;
+    }
+  }
+
+  .button {
+    border: 2px solid #fff;
+    padding: 0.5em 1em;
+    border-radius: func.toEm(5px);
+    color: #fff;
+    cursor: pointer;
+
+    .text {
+      .title {
+        @include g.fontStyle(DINPro-Medium, 26px, 32px);
+      }
+    }
+  }
+
   .menu {
     display: none;
 
@@ -110,8 +144,8 @@ export default {
       margin-right: 1em;
 
       .img {
-        width: func.toEm(15px);
-        height: func.toEm(15px);
+        width: 1.5em;
+        height: 1.5em;
         background-repeat: no-repeat;
         background-size: contain;
       }
@@ -181,30 +215,33 @@ export default {
     align-items: center;
     gap: 3em;
 
-    @include mixin.media(mb) {
-      display: none;
-    }
-
     .content {
-      a {
-        text-decoration: none;
-      }
-      .title {
-        @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
-        background: #ece9e6;
-        background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
-        background: linear-gradient(to right, #ffffff, #ece9e6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        cursor: pointer;
+        a {
+          text-decoration: none;
+        }
+
+        .title {
+          @include g.fontStyle(DINPro-Medium, 26px, 32px);
+          color: #fff;
+        }
       }
 
-      .button {
-        border: 2px solid #fff;
-        padding: 0.75em 1.5em;
-        border-radius: func.toEm(5px);
-        cursor: pointer;
-      }
+    @include mixin.media(mb) {
+      /* display: none; */
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      left: -100%;
+      top: 5vh;
+      padding-top: 10em;
+      gap: 5em;
+      display: flex;
+      align-items: center;
+      transition: .5s;
+      opacity: 0;
     }
   }
 
@@ -219,9 +256,11 @@ export default {
       left: 0;
       top: 5vh;
       padding-top: 10em;
-      gap: 10em;
+      gap: 5em;
       display: flex;
       align-items: center;
+      transition: .5s;
+      opacity: 1;
 
       .content {
         a {
@@ -229,20 +268,8 @@ export default {
         }
 
         .title {
-          @include g.fontStyle(AktivGroteskEx-Bold, 26px, 32px);
-          background: #ece9e6;
-          background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
-          background: linear-gradient(to right, #ffffff, #ece9e6);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          cursor: pointer;
-        }
-
-        .button {
-          border: 2px solid #fff;
-          padding: 0.75em 1.5em;
-          border-radius: func.toEm(5px);
-          cursor: pointer;
+          @include g.fontStyle(DINPro-Medium, 26px, 32px);
+          color: #fff;
         }
       }
     }
