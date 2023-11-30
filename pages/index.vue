@@ -10,7 +10,6 @@
       <Section3 />
       <Section4 />
       <Section5 />
-      <!-- <SectionUnits /> -->
       <SectionMaps />
     </div>
     <Footer />
@@ -23,7 +22,6 @@ import Footer from '../components/humaira-residence/Footer.vue';
 import Whatsapp from '../components/humaira-residence/Whatsapp.vue';
 import Intro from '../components/humaira-residence/Intro.vue';
 import SectionMaps from '../components/humaira-residence/SectionMaps.vue';
-import SectionUnits from '../components/humaira-residence/SectionUnits.vue';
 import SectionParticles from '../components/humaira-residence/SectionParticles.vue';
 import Section1 from '../components/humaira-residence/Section1.vue';
 import Section2 from '../components/humaira-residence/Section2.vue';
@@ -43,7 +41,6 @@ export default {
     Section3,
     Section4,
     Section5,
-    SectionUnits,
     SectionParticles,
 },
   head() {

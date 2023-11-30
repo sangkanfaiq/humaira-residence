@@ -189,6 +189,14 @@ export default {
         top: 50%;
 
         @include g.fontStyle(DINPro-Regular, 22px, 28px);
+
+        @include mixin.media(mb) {
+          bottom: 5%;
+          top: unset;
+          right: unset;
+          left: 45%;
+          width: max-content;
+        }
       }
     }
 
@@ -205,6 +213,14 @@ export default {
         top: 50%;
 
         @include g.fontStyle(DINPro-Regular, 22px, 28px);
+
+        @include mixin.media(mb) {
+          bottom: 5%;
+          top: unset;
+          right: unset;
+          left: 45%;
+          width: max-content;
+        }
       }
     }
   }
