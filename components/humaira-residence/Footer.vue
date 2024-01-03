@@ -92,7 +92,7 @@
             <div class="tt">
               <div class="img-tt"></div>
               <div class="text">
-                <div class="text-social">Tiktok</div>
+                <a href="https://www.tiktok.com/@humaira.residence" target="_blank" class="text-social">Tiktok</a>
               </div>
             </div>
           </div>
